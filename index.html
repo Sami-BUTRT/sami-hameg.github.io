@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sami Hameg | Portfolio Cybersécurité</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+            --primary: #38bdf8;
+            --secondary: #10b981;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(to bottom, #1e293b, #0f172a);
+        }
+        h1 { color: var(--primary); margin: 0; font-size: 2.5rem; }
+        .container { max-width: 900px; margin: auto; padding: 20px; }
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .tag {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-right: 8px;
+            border: 1px solid var(--primary);
+        }
+        .vuln-tag {
+            color: #fb7185;
+            font-family: monospace;
+            font-weight: bold;
+        }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        .btn-github {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--bg);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.2s;
+        }
+        .btn-github:hover { opacity: 0.8; }
+        footer { text-align: center; padding: 40px; font-size: 0.9rem; color: #64748b; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Sami Hameg</h1>
+    <p>Étudiant en Cybersécurité | Portfolio</p>
+</header>
+
+<div class="container">
+    <div class="project-card">
+        <h2>Audit de Sécurité Offensif (Projet Tutoré)</h2>
+        <div style="margin-bottom: 20px;">
+            <span class="tag">Kali Linux</span>
+            <span class="tag">Nessus</span>
+            <span class="tag">Metasploit</span>
+            <span class="tag">VirtualBox</span>
+        </div>
+
+        <p>Dans le cadre de ce projet, j'ai conçu et déployé un <strong>laboratoire de sécurité offensive</strong> complet sous VirtualBox. J'ai importé et configuré trois machines virtuelles au sein d'un <strong>réseau local isolé</strong> pour garantir un environnement d'audit sécurisé.</p>
+
+        <h3>Réalisations techniques :</h3>
+        <ul>
+            <li><strong>Reconnaissance :</strong> Configuration et exécution de scans automatisés avec <strong>Nessus</strong>, suivis d'une analyse critique des rapports de vulnérabilités.</li>
+            <li><strong>Exploitation manuelle :</strong> Recherche et exploitation de failles via Metasploit, notamment :
+                <ul>
+                    <li><span class="vuln-tag">CVE-2010-2075</span> : Compromission de la cible Metasploitable (UnrealIRCd).</li>
+                    <li><span class="vuln-tag">MS08-067</span> : Exploitation de la vulnérabilité service RPC sur Windows XP.</li>
+                </ul>
+            </li>
+            <li><strong>Reporting :</strong> Rédaction d'un rapport d'audit technique détaillé incluant des préconisations de remédiation et soutenance orale du projet.</li>
+        </ul>
+
+        <div style="margin-top: 30px; text-align: center;">
+            <a href="https://github.com/sami-hameg/TON-DEPOT-DETAILS" class="btn-github">
+                Consulter les détails techniques sur GitHub
+            </a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 Sami Hameg - Hébergé sur GitHub Pages via samihameg.page
+</footer>
+
+</body>
+</html>
