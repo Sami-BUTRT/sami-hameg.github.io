@@ -1,17 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sami - Testeur d'Emails</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 20px; }
+        .container { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        button { background: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; }
+        button:hover { background: #0056b3; }
+        #result { margin-top: 20px; text-align: left; }
+        .mail-item { background: #f8f9fa; border-left: 4px solid #007bff; padding: 10px; margin-bottom: 10px; border-radius: 4px; font-size: 0.9em; }
+        .tag { color: #007bff; font-weight: bold; font-size: 0.8em; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>📧 Mon Debugger Mail</h2>
+    <p style="font-size: 0.8em; color: #666;">Envoie tes mails à : <strong>ljfuu.test@inbox.testmail.app</strong></p>
+    
+    <input type="password" id="apiKey" placeholder="Colle ta clé API ici">
+    
+    <button onclick="fetchEmails()">Actualiser la boîte</button>
+
+    <div id="result"></div>
+</div>
+
 <script>
+    // COLLE TON SCRIPT ICI
     async function fetchEmails() {
         const resultDiv = document.getElementById('result');
-
-        // Option A (défaut — sûr pour l'usage interactif) : lire la clé depuis le champ input
         const apiKeyFromInput = document.getElementById('apiKey').value;
-
-        // Option B (test local uniquement) : hardcoder temporairement la clé
-        // const apiKeyFromInput = 'TA_CLE_TESTLOCAL_NE_PAS_COMMIT';
-
-        // Option C (moins recommandé car visible) : lire ?apikey= dans l'URL si tu veux éviter de coller manuellement
-        // const urlParams = new URLSearchParams(window.location.search);
-        // const apiKeyFromInput = urlParams.get('apikey') || '';
-
         const apiKey = apiKeyFromInput;
         const namespace = "ljfuu";
 
@@ -50,3 +71,6 @@
         }
     }
 </script>
+
+</body>
+</html>
