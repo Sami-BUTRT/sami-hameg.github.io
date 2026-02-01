@@ -3,45 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sami - Testeur d'Emails</title>
+    <title>Sami Hameg | Email Debugger</title>
     <style>
-        body { font-family: sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 20px; }
-        .container { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
-        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
-        button { background: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; }
-        button:hover { background: #0056b3; }
-        #result { margin-top: 20px; text-align: left; }
-        .mail-item { background: #f8f9fa; border-left: 4px solid #007bff; padding: 10px; margin-bottom: 10px; border-radius: 4px; font-size: 0.9em; }
-        .tag { color: #007bff; font-weight: bold; font-size: 0.8em; }
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+            --primary: #38bdf8;
+            --secondary: #10b981;
+            --border: #334155;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        .container {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+        }
+        h2 { color: var(--primary); margin-top: 0; }
+        .info-text { font-size: 0.85rem; color: #94a3b8; margin-bottom: 20px; }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background: #0f172a;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: white;
+            box-sizing: border-box;
+        }
+        input:focus { border-color: var(--primary); outline: none; }
+        
+        button {
+            background-color: var(--primary);
+            color: var(--bg);
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        button:hover { opacity: 0.9; transform: translateY(-1px); }
+        
+        #result { margin-top: 25px; text-align: left; }
+        
+        .mail-card {
+            background: #1e293b;
+            border-left: 4px solid var(--secondary);
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 4px;
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .mail-subject { color: var(--primary); font-weight: bold; display: block; }
+        .mail-from { font-size: 0.8em; color: #94a3b8; }
+        
+        .back-btn {
+            margin-top: 20px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        .back-btn:hover { color: var(--primary); }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>📧 Mon Debugger Mail</h2>
-    <p style="font-size: 0.8em; color: #666;">Envoie tes mails à : <strong>ljfuu.test@inbox.testmail.app</strong></p>
+    <h2>📧 Email Debugger</h2>
+    <p class="info-text">Cible : <strong>ljfuu.test@inbox.testmail.app</strong></p>
     
-    <input type="password" id="apiKey" placeholder="Colle ta clé API ici">
+    <input type="password" id="apiKey" placeholder="Entrez votre clé API Testmail">
     
-    <button onclick="fetchEmails()">Actualiser la boîte</button>
+    <button onclick="fetchEmails()">ACTUALISER LA BOÎTE</button>
 
-    <div id="result"></div>
+    <div id="result">
+        <p style="text-align:center; color:#64748b;">En attente de la clé...</p>
+    </div>
 </div>
 
+<a href="index.html" class="back-btn">← Retour au portfolio</a>
+
 <script>
-    // COLLE TON SCRIPT ICI
     async function fetchEmails() {
         const resultDiv = document.getElementById('result');
-        const apiKeyFromInput = document.getElementById('apiKey').value;
-        const apiKey = apiKeyFromInput;
+        const apiKey = document.getElementById('apiKey').value;
         const namespace = "ljfuu";
 
         if (!apiKey) {
-            alert("N'oublie pas de coller ta clé API !");
+            alert("Veuillez saisir votre clé API.");
             return;
         }
 
-        resultDiv.innerHTML = "<em>Chargement des messages...</em>";
+        resultDiv.innerHTML = "<p style='text-align:center;'>🔄 Connexion sécurisée à l'API...</p>";
 
         const apiUrl = `https://api.testmail.app/api/json?apikey=${apiKey}&namespace=${namespace}&tag=test`;
 
@@ -53,21 +126,19 @@
                 resultDiv.innerHTML = "";
                 data.emails.forEach(email => {
                     const div = document.createElement('div');
-                    div.className = 'mail-item';
+                    div.className = 'mail-card';
                     div.innerHTML = `
-                        <span class="tag">REÇU</span><br>
-                        <strong>Sujet:</strong> ${email.subject}<br>
-                        <strong>De:</strong> ${email.from}<br>
-                        <small>${email.text.substring(0, 80)}...</small>
+                        <span class="mail-subject">${email.subject}</span>
+                        <span class="mail-from">De: ${email.from}</span>
+                        <p style="margin-top:8px; font-size:0.9em; color:#cbd5e1;">${email.text.substring(0, 120)}...</p>
                     `;
                     resultDiv.appendChild(div);
                 });
             } else {
-                resultDiv.innerHTML = "📭 Aucun mail avec le tag <strong>test</strong> trouvé.";
+                resultDiv.innerHTML = "<p style='text-align:center;'>📭 Aucun mail trouvé (Tag: test).</p>";
             }
         } catch (error) {
-            resultDiv.innerHTML = "<span style='color:red;'>❌ Erreur de connexion ou clé invalide.</span>";
-            console.error(error);
+            resultDiv.innerHTML = "<p style='text-align:center; color:#fb7185;'>❌ Erreur : Vérifiez votre clé API.</p>";
         }
     }
 </script>
