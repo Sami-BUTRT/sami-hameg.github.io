@@ -3,66 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Debugger - Sami</title>
+    <title>Mon Debugger Email - Sami</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #eef2f7; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 400px; text-align: center; }
-        h2 { color: #333; margin-bottom: 20px; }
-        input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
-        button { background: #28a745; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; transition: background 0.3s; }
-        button:hover { background: #218838; }
-        #result { margin-top: 20px; text-align: left; background: #f8f9fa; padding: 15px; border-radius: 6px; border-left: 4px solid #28a745; min-height: 50px; font-size: 0.9em; }
-        .label { font-size: 0.8em; color: #666; margin-bottom: 5px; text-align: left; display: block; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); width: 100%; max-width: 450px; text-align: center; }
+        h2 { color: #1a73e8; margin-bottom: 10px; }
+        p.subtitle { color: #666; font-size: 0.9em; margin-bottom: 25px; }
+        .input-group { text-align: left; margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.85em; color: #444; }
+        input { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 14px; transition: border-color 0.3s; }
+        input:focus { border-color: #1a73e8; outline: none; }
+        button { background: #1a73e8; color: white; border: none; padding: 14px; border-radius: 8px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold; margin-top: 10px; }
+        button:hover { background: #1557b0; }
+        #result { margin-top: 25px; text-align: left; background: #fafafa; padding: 15px; border-radius: 8px; border: 1px solid #eee; min-height: 80px; }
+        .mail-item { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px; }
+        .mail-item:last-child { border-bottom: none; }
+        .tag { background: #e8f0fe; color: #1a73e8; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h2>📧 Mail Tester</h2>
+        <h2>📧 Email Checker</h2>
+        <p class="subtitle">Vérifie tes mails envoyés à <strong>ljfuu.test@inbox.testmail.app</strong></p>
         
-        <span class="label">Ta clé API (restera locale à ton navigateur) :</span>
-        <input type="password" id="apiKey" placeholder="Ex: 5af4e8...">
+        <div class="input-group">
+            <label for="apiKey">Clé API Testmail.app :</label>
+            <input type="password" id="apiKey" placeholder="Colle ta clé ici...">
+        </div>
 
-        <span class="label">Ton Namespace :</span>
-        <input type="text" id="namespace" placeholder="Ex: ton_nom">
+        <button onclick="fetchEmails()">Actualiser la boîte</button>
 
-        <button onclick="fetchLastEmail()">Vérifier le dernier mail</button>
-
-        <div id="result">Les résultats s'afficheront ici...</div>
+        <div id="result">
+            <span style="color: #888;">Entrez votre clé et cliquez sur Actualiser.</span>
+        </div>
     </div>
 
     <script>
-        async function fetchLastEmail() {
+        async function fetchEmails() {
             const resultDiv = document.getElementById('result');
             const apiKey = document.getElementById('apiKey').value;
-            const namespace = document.getElementById('namespace').value;
+            const namespace = "ljfuu"; // Ton namespace est fixé ici
 
-            if (!apiKey || !namespace) {
-                resultDiv.innerHTML = "<span style='color:red;'>⚠️ Remplis les deux champs !</span>";
+            if (!apiKey) {
+                alert("N'oublie pas de coller ta clé API !");
                 return;
             }
 
-            resultDiv.innerText = "Recherche en cours...";
+            resultDiv.innerHTML = "<em>Chargement des messages...</em>";
 
-            const apiUrl = `https://api.testmail.app/api/json?apikey=${apiKey}&namespace=${namespace}`;
+            // On demande les messages avec le tag "test"
+            const apiUrl = `https://api.testmail.app/api/json?apikey=${apiKey}&namespace=${namespace}&tag=test`;
 
             try {
                 const response = await fetch(apiUrl);
                 const data = await response.json();
 
                 if (data.emails && data.emails.length > 0) {
-                    const lastEmail = data.emails[0];
-                    resultDiv.innerHTML = `
-                        <strong>Sujet :</strong> ${lastEmail.subject}<br>
-                        <strong>De :</strong> ${lastEmail.from}<br><br>
-                        <strong>Contenu :</strong><br>
-                        <small>${lastEmail.text.substring(0, 100)}...</small>
-                    `;
+                    resultDiv.innerHTML = ""; // On vide le texte par défaut
+                    data.emails.forEach(email => {
+                        const div = document.createElement('div');
+                        div.className = 'mail-item';
+                        div.innerHTML = `
+                            <span class="tag">REÇU</span><br>
+                            <strong>Sujet:</strong> ${email.subject}<br>
+                            <strong>De:</strong> ${email.from}<br>
+                            <small>${email.text.substring(0, 80)}...</small>
+                        `;
+                        resultDiv.appendChild(div);
+                    });
                 } else {
-                    resultDiv.innerText = "📭 Boîte vide pour le moment.";
+                    resultDiv.innerHTML = "📭 Aucun mail avec le tag <strong>test</strong> trouvé.";
                 }
             } catch (error) {
-                resultDiv.innerText = "❌ Erreur : Vérifie ta clé ou ta connexion.";
+                resultDiv.innerHTML = "<span style='color:red;'>❌ Erreur de connexion ou clé invalide.</span>";
                 console.error(error);
             }
         }
