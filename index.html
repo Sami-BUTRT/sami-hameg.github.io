@@ -63,10 +63,8 @@
             text-decoration: none;
             font-weight: bold;
             transition: opacity 0.2s;
-            margin: 5px;
         }
         .btn-github:hover { opacity: 0.8; }
-        .btn-secondary { background-color: var(--secondary); }
         .badge-container {
             text-align: center;
             padding: 20px;
@@ -101,39 +99,23 @@
             <span class="tag">VirtualBox</span>
         </div>
 
-        <p>Conception et déploiement d'un <strong>laboratoire de sécurité offensive</strong> isolé pour l'audit et l'exploitation de vulnérabilités critiques.</p>
+        <p>Dans le cadre de ce projet, j'ai conçu et déployé un <strong>laboratoire de sécurité offensive</strong> complet sous VirtualBox. J'ai importé et configuré trois machines virtuelles au sein d'un <strong>réseau local isolé</strong> pour garantir un environnement d'audit sécurisé.</p>
 
         <h3>Réalisations techniques :</h3>
         <ul>
-            <li><strong>Reconnaissance :</strong> Analyse critique via <strong>Nessus</strong>.</li>
-            <li><strong>Exploitation :</strong> Utilisation de Metasploit (<span class="vuln-tag">CVE-2010-2075</span>, <span class="vuln-tag">MS08-067</span>).</li>
-            <li><strong>Reporting :</strong> Rédaction de rapports de remédiation technique.</li>
+            <li><strong>Reconnaissance :</strong> Configuration et exécution de scans automatisés avec <strong>Nessus</strong>, suivis d'une analyse critique des rapports de vulnérabilités.</li>
+            <li><strong>Exploitation manuelle :</strong> Recherche et exploitation de failles via Metasploit, notamment :
+                <ul>
+                    <li><span class="vuln-tag">CVE-2010-2075</span> : Compromission de la cible Metasploitable (UnrealIRCd).</li>
+                    <li><span class="vuln-tag">MS08-067</span> : Exploitation de la vulnérabilité service RPC sur Windows XP.</li>
+                </ul>
+            </li>
+            <li><strong>Reporting :</strong> Rédaction d'un rapport d'audit technique détaillé incluant des préconisations de remédiation et soutenance orale du projet.</li>
         </ul>
 
         <div style="margin-top: 30px; text-align: center;">
             <a href="https://github.com/Sami-BUTRT/Test-d-Intrusion-Complet" class="btn-github">
-                Consulter les détails sur GitHub
-            </a>
-        </div>
-    </div>
-
-    <div class="project-card">
-        <h2>🛠️ Email QA & Debugging Tool</h2>
-        <div style="margin-bottom: 20px;">
-            <span class="tag">API REST</span>
-            <span class="tag">JavaScript ES6</span>
-            <span class="tag">Testmail.app</span>
-            <span class="tag">JSON Manipulation</span>
-        </div>
-
-        <p>Développement d'un utilitaire de monitoring de flux d'emails. Cet outil exploite l'API <strong>testmail.app</strong> pour intercepter et analyser les messages en temps réel, utile pour valider des processus d'inscription ou d'audit de formulaires.</p>
-
-        <div style="margin-top: 30px; text-align: center;">
-            <a href="test-mail.html" class="btn-github btn-secondary">
-                Lancer l'outil en direct
-            </a>
-            <a href="https://github.com/sami-hameg/sami-hameg.github.io" class="btn-github">
-                Code source
+                Consulter les détails techniques sur GitHub
             </a>
         </div>
     </div>
@@ -154,7 +136,7 @@
 </div>
 
 <footer>
-    &copy; 2026 Sami Hameg - Hébergé sur GitHub Pages | Compétences mobilisables sur demande
+    &copy; 2026 Sami Hameg - Hébergé sur GitHub Pages via samihameg.page | Compétences mobilisables sur demande
 </footer>
 
 </body>
