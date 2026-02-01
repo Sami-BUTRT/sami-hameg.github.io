@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Debugger - Sami</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #eef2f7; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 400px; text-align: center; }
+        h2 { color: #333; margin-bottom: 20px; }
+        input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
+        button { background: #28a745; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; transition: background 0.3s; }
+        button:hover { background: #218838; }
+        #result { margin-top: 20px; text-align: left; background: #f8f9fa; padding: 15px; border-radius: 6px; border-left: 4px solid #28a745; min-height: 50px; font-size: 0.9em; }
+        .label { font-size: 0.8em; color: #666; margin-bottom: 5px; text-align: left; display: block; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>📧 Mail Tester</h2>
+        
+        <span class="label">Ta clé API (restera locale à ton navigateur) :</span>
+        <input type="password" id="apiKey" placeholder="Ex: 5af4e8...">
+
+        <span class="label">Ton Namespace :</span>
+        <input type="text" id="namespace" placeholder="Ex: ton_nom">
+
+        <button onclick="fetchLastEmail()">Vérifier le dernier mail</button>
+
+        <div id="result">Les résultats s'afficheront ici...</div>
+    </div>
+
+    <script>
+        async function fetchLastEmail() {
+            const resultDiv = document.getElementById('result');
+            const apiKey = document.getElementById('apiKey').value;
+            const namespace = document.getElementById('namespace').value;
+
+            if (!apiKey || !namespace) {
+                resultDiv.innerHTML = "<span style='color:red;'>⚠️ Remplis les deux champs !</span>";
+                return;
+            }
+
+            resultDiv.innerText = "Recherche en cours...";
+
+            const apiUrl = `https://api.testmail.app/api/json?apikey=${apiKey}&namespace=${namespace}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (data.emails && data.emails.length > 0) {
+                    const lastEmail = data.emails[0];
+                    resultDiv.innerHTML = `
+                        <strong>Sujet :</strong> ${lastEmail.subject}<br>
+                        <strong>De :</strong> ${lastEmail.from}<br><br>
+                        <strong>Contenu :</strong><br>
+                        <small>${lastEmail.text.substring(0, 100)}...</small>
+                    `;
+                } else {
+                    resultDiv.innerText = "📭 Boîte vide pour le moment.";
+                }
+            } catch (error) {
+                resultDiv.innerText = "❌ Erreur : Vérifie ta clé ou ta connexion.";
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>
