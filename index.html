@@ -24,7 +24,6 @@
             margin: 0;
         }
 
-        /* --- Header & Intro --- */
         header {
             text-align: center;
             padding: 80px 20px;
@@ -33,10 +32,8 @@
 
         h1 { color: var(--primary); margin: 0; font-size: 2.8rem; letter-spacing: -1px; }
         .subtitle { font-size: 1.2rem; color: var(--text-muted); margin-top: 10px; }
-
         .container { max-width: 900px; margin: auto; padding: 20px; }
 
-        /* --- Sections Style --- */
         section { margin-bottom: 50px; }
         h2 { border-left: 4px solid var(--primary); padding-left: 15px; margin-bottom: 25px; font-size: 1.5rem; }
 
@@ -48,61 +45,83 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
-        /* --- Tags & Skills --- */
-        .skills-grid {
+        /* --- Style À Propos --- */
+        .about-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: 180px 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        .highlight-box {
+            border-left: 3px solid var(--secondary);
+            background: rgba(16, 185, 129, 0.05);
+            padding: 15px;
+            font-style: italic;
+            margin-top: 15px;
         }
 
+        /* --- Style Compétences --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+        }
         .tag {
-            display: inline-block;
             background: rgba(56, 189, 248, 0.1);
             color: var(--primary);
-            padding: 5px 12px;
-            border-radius: 6px;
+            padding: 8px;
+            border-radius: 8px;
             font-size: 0.85rem;
             font-weight: 600;
+            text-align: center;
             border: 1px solid rgba(56, 189, 248, 0.2);
         }
+        
+        /* --- Style Réseaux Précis --- */
+        .net-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px;
+        }
+        .net-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 10px;
+            transition: border-color 0.3s ease;
+        }
+        .net-card:hover {
+            border-color: var(--primary);
+        }
+        .net-card h4 { color: var(--secondary); margin-top: 0; display: flex; align-items: center; gap: 8px; }
+        .net-card ul { padding-left: 18px; margin-bottom: 0; }
+        .net-card li { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 8px; }
 
         .vuln-tag {
             background: rgba(251, 113, 133, 0.1);
             color: var(--accent);
-            font-family: 'Courier New', monospace;
+            font-family: monospace;
             padding: 2px 6px;
             border-radius: 4px;
         }
 
-        /* --- Buttons --- */
         .btn {
             display: inline-flex;
-            align-items: center;
             background-color: var(--primary);
             color: var(--bg);
             padding: 12px 24px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            transition: transform 0.2s, opacity 0.2s;
+            transition: 0.2s;
         }
+        .btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
-        .btn:hover { transform: translateY(-2px); opacity: 0.9; }
-
-        /* --- Footer --- */
-        footer { 
-            text-align: center; 
-            padding: 60px 20px; 
-            font-size: 0.9rem; 
-            color: var(--text-muted);
-            border-top: 1px solid var(--border);
-        }
-
+        footer { text-align: center; padding: 60px 20px; color: var(--text-muted); border-top: 1px solid var(--border); }
         a { color: var(--primary); text-decoration: none; }
-        a:hover { text-decoration: underline; }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; text-align: center; }
             h1 { font-size: 2rem; }
         }
     </style>
@@ -112,15 +131,30 @@
 <header>
     <h1>Sami Hameg</h1>
     <p class="subtitle">Étudiant en BUT Réseaux & Télécommunications | Spécialisation Cybersécurité</p>
-    <p style="max-width: 600px; margin: 20px auto; color: var(--text-muted);">
-        Passionné par l'audit de sécurité et l'administration système, je développe mes compétences en offensive security et en durcissement d'infrastructure.
-    </p>
 </header>
 
 <div class="container">
+    
+    <section id="about">
+        <h2>👤 À Propos de Moi</h2>
+        <div class="card">
+            <div class="about-grid">
+                <div style="text-align: center;">
+                    <img src="https://via.placeholder.com/150" alt="Sami Hameg" style="border-radius: 50%; border: 3px solid var(--primary); width: 150px; height: 150px; object-fit: cover;">
+                </div>
+                <div class="about-text">
+                    <p>Actuellement en 2ème année de <strong>BUT R&T</strong>, je me spécialise dans la sécurisation des infrastructures et l'analyse de vulnérabilités.</p>
+                    <p>Ma démarche consiste à comprendre le fonctionnement profond des protocoles pour mieux les défendre. Je pratique régulièrement sur des environnements virtualisés et des plateformes de CTF.</p>
+                    <div class="highlight-box">
+                        "Curieux de nature, je vois chaque défi de sécurité comme une opportunité d'approfondir mes connaissances techniques."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="certifications">
-        <h2>🏆 Certifications & Badges</h2>
+        <h2>🏆 Certifications</h2>
         <div class="card" style="text-align: center;">
             <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="b4cc6608-54d9-45ac-8dcf-fdfdc5932d18" data-share-badge-host="https://www.credly.com"></div>
             <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
@@ -130,46 +164,71 @@
     <section id="skills">
         <h2>🛠️ Environnement Technique</h2>
         <div class="skills-grid">
-            <span class="tag">Kali Linux</span>
-            <span class="tag">Parrot OS</span>
-            <span class="tag">Cisco IOS</span>
-            <span class="tag">Wireshark</span>
-            <span class="tag">Python</span>
-            <span class="tag">Bash</span>
-            <span class="tag">Docker</span>
-            <span class="tag">Active Directory</span>
+            <div class="tag">Kali Linux</div>
+            <div class="tag">Metasploit</div>
+            <div class="tag">Nessus</div>
+            <div class="tag">Bash / Python</div>
+            <div class="tag">VirtualBox</div>
+            <div class="tag">GNS3</div>
+        </div>
+    </section>
+
+    <section id="network-skills">
+        <h2>🌐 Expertise Réseaux & Infrastructure</h2>
+        <div class="net-grid">
+            
+            <div class="net-card">
+                <h4>⚡ Routage & Switching</h4>
+                <ul>
+                    <li>Configuration <strong>Cisco Catalyst</strong> (VLANs, Trunking 802.1Q).</li>
+                    <li>Routage dynamique <strong>OSPF v2/v3</strong> et statique.</li>
+                    <li>Protocoles de redondance : <strong>STP/RSTP</strong> et EtherChannel.</li>
+                </ul>
+            </div>
+
+            <div class="net-card">
+                <h4>🛡️ Sécurité & Filtrage</h4>
+                <ul>
+                    <li>Mise en œuvre d'<strong>ACLs étendues</strong> (IPv4/IPv6).</li>
+                    <li>Sécurisation d'accès : <strong>Port-Security</strong> et SSH.</li>
+                    <li>Translation d'adresses (<strong>NAT/PAT</strong>) et VPN IPsec.</li>
+                </ul>
+            </div>
+
+            <div class="net-card">
+                <h4>🔍 Analyse & Services IP</h4>
+                <ul>
+                    <li>Analyse de flux via <strong>Wireshark</strong> et Tcpdump.</li>
+                    <li>Gestion <strong>DHCP Relay</strong>, DNS et supervision SNMP.</li>
+                    <li>Maîtrise des environnements <strong>Linux Server</strong> (Debian).</li>
+                </ul>
+            </div>
+
         </div>
     </section>
 
     <section id="projects">
-        <h2>🚀 Projets Récents</h2>
+        <h2>🚀 Projet Phare</h2>
         <article class="card">
             <h3>Audit de Sécurité Offensif (Pentesting Lab)</h3>
             <div style="margin-bottom: 15px;">
-                <span class="tag">Metasploit</span>
-                <span class="tag">Nessus</span>
-                <span class="tag">VirtualBox</span>
-                <span class="tag">Pentest</span>
+                <span class="tag">Offensive Security</span>
+                <span class="tag">Audit Technique</span>
             </div>
-
-            <p>Déploiement d'un laboratoire isolé pour simuler des attaques réelles et analyser les vecteurs de compromission sur des environnements Windows et Linux.</p>
-
-            <ul style="padding-left: 20px; color: var(--text-muted);">
-                <li><strong>Reconnaissance :</strong> Cartographie réseau et scan de vulnérabilités avec Nessus.</li>
-                <li><strong>Exploitation :</strong> Usage de <span class="vuln-tag">CVE-2010-2075</span> (Backdoor IRC) et <span class="vuln-tag">MS08-067</span>.</li>
-                <li><strong>Remédiation :</strong> Rédaction de rapports avec préconisations de sécurité (Patching, ACLs).</li>
+            <p>Déploiement d'un laboratoire isolé pour simuler des attaques réelles et analyser les vecteurs de compromission.</p>
+            <ul style="padding-left: 20px; color: var(--text-muted); font-size: 0.95rem;">
+                <li>Scan de vulnérabilités critiques via <strong>Nessus</strong>.</li>
+                <li>Exploitation de failles : <span class="vuln-tag">CVE-2010-2075</span> et <span class="vuln-tag">MS08-067</span>.</li>
+                <li>Rédaction d'un rapport avec préconisations de <strong>remédiation</strong>.</li>
             </ul>
-
             <div style="margin-top: 25px; text-align: center;">
-                <a href="https://github.com/Sami-BUTRT/Test-d-Intrusion-Complet" class="btn" target="_blank" rel="noopener">
-                    Voir sur GitHub
-                </a>
+                <a href="https://github.com/Sami-BUTRT/Test-d-Intrusion-Complet" class="btn" target="_blank" rel="noopener">Consulter sur GitHub</a>
             </div>
         </article>
     </section>
 
     <section id="contact">
-        <h2>📩 Contact & Réseaux</h2>
+        <h2>📩 Contact</h2>
         <div class="card">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
                 <div>
@@ -186,8 +245,7 @@
 </div>
 
 <footer>
-    <p>&copy; 2026 Sami Hameg - Portfolio Cybersécurité</p>
-    <p style="font-size: 0.8rem;">Hébergé avec soin sur GitHub Pages</p>
+    <p>&copy; 2026 Sami Hameg - Étudiant BUT R&T</p>
 </footer>
 
 </body>
