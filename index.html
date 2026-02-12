@@ -9,134 +9,185 @@
             --bg: #0f172a;
             --card-bg: #1e293b;
             --text: #f8fafc;
+            --text-muted: #94a3b8;
             --primary: #38bdf8;
             --secondary: #10b981;
+            --accent: #fb7185;
+            --border: #334155;
         }
+
         body {
             background-color: var(--bg);
             color: var(--text);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 0;
         }
+
+        /* --- Header & Intro --- */
         header {
             text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(to bottom, #1e293b, #0f172a);
+            padding: 80px 20px;
+            background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
         }
-        h1 { color: var(--primary); margin: 0; font-size: 2.5rem; }
+
+        h1 { color: var(--primary); margin: 0; font-size: 2.8rem; letter-spacing: -1px; }
+        .subtitle { font-size: 1.2rem; color: var(--text-muted); margin-top: 10px; }
+
         .container { max-width: 900px; margin: auto; padding: 20px; }
-        .project-card {
+
+        /* --- Sections Style --- */
+        section { margin-bottom: 50px; }
+        h2 { border-left: 4px solid var(--primary); padding-left: 15px; margin-bottom: 25px; font-size: 1.5rem; }
+
+        .card {
             background: var(--card-bg);
             border-radius: 12px;
             padding: 30px;
-            border: 1px solid #334155;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
+
+        /* --- Tags & Skills --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
         .tag {
             display: inline-block;
             background: rgba(56, 189, 248, 0.1);
             color: var(--primary);
-            padding: 4px 12px;
-            border-radius: 20px;
+            padding: 5px 12px;
+            border-radius: 6px;
             font-size: 0.85rem;
-            font-weight: bold;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            border: 1px solid var(--primary);
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.2);
         }
+
         .vuln-tag {
-            color: #fb7185;
-            font-family: monospace;
-            font-weight: bold;
+            background: rgba(251, 113, 133, 0.1);
+            color: var(--accent);
+            font-family: 'Courier New', monospace;
+            padding: 2px 6px;
+            border-radius: 4px;
         }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
-        .btn-github {
-            display: inline-block;
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
             background-color: var(--primary);
             color: var(--bg);
             padding: 12px 24px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            transition: opacity 0.2s;
+            transition: transform 0.2s, opacity 0.2s;
         }
-        .btn-github:hover { opacity: 0.8; }
-        .badge-container {
-            text-align: center;
-            padding: 20px;
+
+        .btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+        /* --- Footer --- */
+        footer { 
+            text-align: center; 
+            padding: 60px 20px; 
+            font-size: 0.9rem; 
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
         }
-        footer { text-align: center; padding: 40px; font-size: 0.9rem; color: #64748b; }
-        a { text-decoration: none; }
+
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
 
 <header>
     <h1>Sami Hameg</h1>
-    <p>Étudiant en 2e année de BUT Réseaux et Télécommunications | Portfolio</p>
+    <p class="subtitle">Étudiant en BUT Réseaux & Télécommunications | Spécialisation Cybersécurité</p>
+    <p style="max-width: 600px; margin: 20px auto; color: var(--text-muted);">
+        Passionné par l'audit de sécurité et l'administration système, je développe mes compétences en offensive security et en durcissement d'infrastructure.
+    </p>
 </header>
 
 <div class="container">
 
-    <div class="project-card">
+    <section id="certifications">
         <h2>🏆 Certifications & Badges</h2>
-        <div class="badge-container">
+        <div class="card" style="text-align: center;">
             <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="b4cc6608-54d9-45ac-8dcf-fdfdc5932d18" data-share-badge-host="https://www.credly.com"></div>
             <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
         </div>
-    </div>
+    </section>
 
-    <div class="project-card">
-        <h2>Audit de Sécurité Offensif (Projet Tutoré)</h2>
-        <div style="margin-bottom: 20px;">
+    <section id="skills">
+        <h2>🛠️ Environnement Technique</h2>
+        <div class="skills-grid">
             <span class="tag">Kali Linux</span>
-            <span class="tag">Nessus</span>
-            <span class="tag">Metasploit</span>
-            <span class="tag">VirtualBox</span>
+            <span class="tag">Parrot OS</span>
+            <span class="tag">Cisco IOS</span>
+            <span class="tag">Wireshark</span>
+            <span class="tag">Python</span>
+            <span class="tag">Bash</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Active Directory</span>
         </div>
+    </section>
 
-        <p>Dans le cadre de ce projet, j'ai conçu et déployé un <strong>laboratoire de sécurité offensive</strong> complet sous VirtualBox. J'ai importé et configuré trois machines virtuelles au sein d'un <strong>réseau local isolé</strong> pour garantir un environnement d'audit sécurisé.</p>
-
-        <h3>Réalisations techniques :</h3>
-        <ul>
-            <li><strong>Reconnaissance :</strong> Configuration et exécution de scans automatisés avec <strong>Nessus</strong>, suivis d'une analyse critique des rapports de vulnérabilités.</li>
-            <li><strong>Exploitation manuelle :</strong> Recherche et exploitation de failles via Metasploit, notamment :
-                <ul>
-                    <li><span class="vuln-tag">CVE-2010-2075</span> : Compromission de la cible Metasploitable (UnrealIRCd).</li>
-                    <li><span class="vuln-tag">MS08-067</span> : Exploitation de la vulnérabilité service RPC sur Windows XP.</li>
-                </ul>
-            </li>
-            <li><strong>Reporting :</strong> Rédaction d'un rapport d'audit technique détaillé incluant des préconisations de remédiation et soutenance orale du projet.</li>
-        </ul>
-
-        <div style="margin-top: 30px; text-align: center;">
-            <a href="https://github.com/Sami-BUTRT/Test-d-Intrusion-Complet" class="btn-github">
-                Consulter les détails techniques sur GitHub
-            </a>
-        </div>
-    </div>
-
-    <div class="project-card">
-        <h2>Contact & Réseaux</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-            <div>
-                <p><strong>Email :</strong> <a href="mailto:shameg.pro@gmail.com" style="color: var(--primary);">shameg.pro@gmail.com</a></p>
-                <p><strong>Téléphone :</strong> 07 67 17 33 59</p>
+    <section id="projects">
+        <h2>🚀 Projets Récents</h2>
+        <article class="card">
+            <h3>Audit de Sécurité Offensif (Pentesting Lab)</h3>
+            <div style="margin-bottom: 15px;">
+                <span class="tag">Metasploit</span>
+                <span class="tag">Nessus</span>
+                <span class="tag">VirtualBox</span>
+                <span class="tag">Pentest</span>
             </div>
-            <div>
-                <p><strong>Ville :</strong> Marly-la-Ville, France</p>
-                <p><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/sami-hameg" target="_blank" style="color: var(--primary);">Mon profil professionnel</a></p>
+
+            <p>Déploiement d'un laboratoire isolé pour simuler des attaques réelles et analyser les vecteurs de compromission sur des environnements Windows et Linux.</p>
+
+            <ul style="padding-left: 20px; color: var(--text-muted);">
+                <li><strong>Reconnaissance :</strong> Cartographie réseau et scan de vulnérabilités avec Nessus.</li>
+                <li><strong>Exploitation :</strong> Usage de <span class="vuln-tag">CVE-2010-2075</span> (Backdoor IRC) et <span class="vuln-tag">MS08-067</span>.</li>
+                <li><strong>Remédiation :</strong> Rédaction de rapports avec préconisations de sécurité (Patching, ACLs).</li>
+            </ul>
+
+            <div style="margin-top: 25px; text-align: center;">
+                <a href="https://github.com/Sami-BUTRT/Test-d-Intrusion-Complet" class="btn" target="_blank" rel="noopener">
+                    Voir sur GitHub
+                </a>
+            </div>
+        </article>
+    </section>
+
+    <section id="contact">
+        <h2>📩 Contact & Réseaux</h2>
+        <div class="card">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                <div>
+                    <p><strong>📍 Localisation</strong><br>Marly-la-Ville, France</p>
+                    <p><strong>📧 Email</strong><br><a href="mailto:shameg.pro@gmail.com">shameg.pro@gmail.com</a></p>
+                </div>
+                <div>
+                    <p><strong>🔗 LinkedIn</strong><br><a href="https://www.linkedin.com/in/sami-hameg" target="_blank" rel="noopener">Mon profil professionnel</a></p>
+                    <p><strong>📞 Téléphone</strong><br>07 67 17 33 59</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 </div>
 
 <footer>
-    &copy; 2026 Sami Hameg - Hébergé sur GitHub Pages via samihameg.page | Compétences mobilisables sur demande
+    <p>&copy; 2026 Sami Hameg - Portfolio Cybersécurité</p>
+    <p style="font-size: 0.8rem;">Hébergé avec soin sur GitHub Pages</p>
 </footer>
 
 </body>
