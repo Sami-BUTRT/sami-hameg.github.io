@@ -4,133 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sami Hameg | Portfolio Cybersécurité</title>
-    <style>
-        :root {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
-            --primary: #38bdf8;
-            --secondary: #10b981;
-            --accent: #fb7185;
-            --border: #334155;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        header {
-            text-align: center;
-            padding: 80px 20px;
-            background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
-        }
-
-        h1 { color: var(--primary); margin: 0; font-size: 2.8rem; letter-spacing: -1px; }
-        .subtitle { font-size: 1.2rem; color: var(--text-muted); margin-top: 10px; }
-        .container { max-width: 900px; margin: auto; padding: 20px; }
-
-        section { margin-bottom: 50px; }
-        h2 { border-left: 4px solid var(--primary); padding-left: 15px; margin-bottom: 25px; font-size: 1.5rem; }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            border: 1px solid var(--border);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        /* --- Style À Propos --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 30px;
-            align-items: center;
-        }
-        .highlight-box {
-            border-left: 3px solid var(--secondary);
-            background: rgba(16, 185, 129, 0.05);
-            padding: 15px;
-            font-style: italic;
-            margin-top: 15px;
-        }
-
-        /* --- Style Compétences --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-            gap: 12px;
-        }
-        .tag {
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--primary);
-            padding: 8px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-align: center;
-            border: 1px solid rgba(56, 189, 248, 0.2);
-        }
-        
-        /* --- Style Réseaux Précis --- */
-        .net-grid {
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 20px;
-        }
-        .net-card {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid var(--border);
-            padding: 20px;
-            border-radius: 10px;
-            transition: border-color 0.3s ease;
-        }
-        .net-card:hover {
-            border-color: var(--primary);
-        }
-        .net-card h4 { color: var(--secondary); margin-top: 0; display: flex; align-items: center; gap: 8px; }
-        .net-card ul { padding-left: 18px; margin-bottom: 0; }
-        .net-card li { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 8px; }
-
-        .vuln-tag {
-            background: rgba(251, 113, 133, 0.1);
-            color: var(--accent);
-            font-family: monospace;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-
-        .btn {
-            display: inline-flex;
-            background-color: var(--primary);
-            color: var(--bg);
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-        .btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
-
-        footer { text-align: center; padding: 60px 20px; color: var(--text-muted); border-top: 1px solid var(--border); }
-        a { color: var(--primary); text-decoration: none; }
-
-        @media (max-width: 768px) {
-            .about-grid { grid-template-columns: 1fr; text-align: center; }
-            h1 { font-size: 2rem; }
-        }
-    </style>
+    <meta name="description" content="Portfolio de Sami Hameg — Étudiant en BUT Réseaux & Télécommunications, spécialisé en Cybersécurité.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Sami Hameg | Portfolio Cybersécurité">
+    <meta property="og:description" content="Étudiant en BUT Réseaux & Télécommunications, spécialisé en Cybersécurité. Découvrez mes projets et compétences.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sami-hameg.github.io/">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🛡️</text></svg>">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-logo">SH</div>
+        <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
+            ☰
+        </button>
+        <ul class="navbar-menu" id="navbar-menu">
+            <li><a href="#about">À Propos</a></li>
+            <li><a href="#formation">Formation</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#network-skills">Réseaux</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact" class="navbar-cta">Me contacter</a></li>
+        </ul>
+    </div>
+</nav>
 
 <header>
     <h1>Sami Hameg</h1>
     <p class="subtitle">Étudiant en BUT Réseaux & Télécommunications | Spécialisation Cybersécurité</p>
+    <div class="header-cta">
+        <a href="#contact" class="btn">Me contacter</a>
+    </div>
 </header>
 
 <div class="container">
@@ -139,8 +53,8 @@
         <h2>👤 À Propos de Moi</h2>
         <div class="card">
             <div class="about-grid">
-                <div style="text-align: center;">
-                    <img src="https://via.placeholder.com/150" alt="Sami Hameg" style="border-radius: 50%; border: 3px solid var(--primary); width: 150px; height: 150px; object-fit: cover;">
+                <div class="about-image-container">
+                    <div class="profile-initial">S</div>
                 </div>
                 <div class="about-text">
                     <p>Actuellement en 2ème année de <strong>BUT R&T</strong>, je me spécialise dans la sécurisation des infrastructures et l'analyse de vulnérabilités.</p>
@@ -153,20 +67,28 @@
         </div>
     </section>
 
-    <section id="certifications">
-        <h2>🏆 Certifications</h2>
-        <div class="card" style="text-align: center;">
-            <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="b4cc6608-54d9-45ac-8dcf-fdfdc5932d18" data-share-badge-host="https://www.credly.com"></div>
-            <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+    <section id="formation">
+        <h2>🎓 Formation</h2>
+        <div class="card">
+            <div class="formation-content">
+                <div class="formation-item">
+                    <p><strong>BUT Réseaux & Télécommunications</strong></p>
+                    <p>Spécialisation Cybersécurité</p>
+                    <p>2ème année (2024-2026)</p>
+                    <p>IUT de [Ville]</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="skills">
-        <h2>🛠️ Environnement Technique</h2>
+        <h2>🛠️ Compétences Techniques</h2>
         <div class="skills-grid">
             <div class="tag">Kali Linux</div>
             <div class="tag">Metasploit</div>
             <div class="tag">Nessus</div>
+            <div class="tag">Wireshark</div>
+            <div class="tag">Tcpdump</div>
             <div class="tag">Bash / Python</div>
             <div class="tag">VirtualBox</div>
             <div class="tag">GNS3</div>
@@ -208,36 +130,45 @@
     </section>
 
     <section id="projects">
-        <h2>🚀 Projet Phare</h2>
+        <h2>🚀 Projets</h2>
         <article class="card">
             <h3>Audit de Sécurité Offensif (Pentesting Lab)</h3>
-            <div style="margin-bottom: 15px;">
+            <div class="project-tags">
                 <span class="tag">Offensive Security</span>
                 <span class="tag">Audit Technique</span>
             </div>
             <p>Déploiement d'un laboratoire isolé pour simuler des attaques réelles et analyser les vecteurs de compromission.</p>
-            <ul style="padding-left: 20px; color: var(--text-muted); font-size: 0.95rem;">
+            <ul class="project-list">
                 <li>Scan de vulnérabilités critiques via <strong>Nessus</strong>.</li>
                 <li>Exploitation de failles : <span class="vuln-tag">CVE-2010-2075</span> et <span class="vuln-tag">MS08-067</span>.</li>
                 <li>Rédaction d'un rapport avec préconisations de <strong>remédiation</strong>.</li>
             </ul>
-            <div style="margin-top: 25px; text-align: center;">
+            <div class="project-actions">
                 <a href="https://github.com/Sami-BUTRT/Test-d-Intrusion-Complet" class="btn" target="_blank" rel="noopener">Consulter sur GitHub</a>
             </div>
         </article>
     </section>
 
+    <section id="certifications">
+        <h2>🏆 Certifications</h2>
+        <div class="card certifications-container">
+            <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="b4cc6608-54d9-45ac-8dcf-fdfdc5932d18" data-share-badge-host="https://www.credly.com"></div>
+            <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+        </div>
+    </section>
+
     <section id="contact">
         <h2>📩 Contact</h2>
         <div class="card">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                <div>
+            <div class="contact-grid">
+                <div class="contact-item">
                     <p><strong>📍 Localisation</strong><br>Marly-la-Ville, France</p>
+                </div>
+                <div class="contact-item">
                     <p><strong>📧 Email</strong><br><a href="mailto:shameg.pro@gmail.com">shameg.pro@gmail.com</a></p>
                 </div>
-                <div>
+                <div class="contact-item">
                     <p><strong>🔗 LinkedIn</strong><br><a href="https://www.linkedin.com/in/sami-hameg" target="_blank" rel="noopener">Mon profil professionnel</a></p>
-                    <p><strong>📞 Téléphone</strong><br>07 67 17 33 59</p>
                 </div>
             </div>
         </div>
@@ -247,6 +178,35 @@
 <footer>
     <p>&copy; 2026 Sami Hameg - Étudiant BUT R&T</p>
 </footer>
+
+<script>
+// Mobile navbar toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const navbarToggle = document.getElementById('navbar-toggle');
+    const navbarMenu = document.getElementById('navbar-menu');
+    
+    if (navbarToggle && navbarMenu) {
+        navbarToggle.addEventListener('click', function() {
+            navbarMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = navbarMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navbarMenu.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!navbarToggle.contains(event.target) && !navbarMenu.contains(event.target)) {
+                navbarMenu.classList.remove('active');
+            }
+        });
+    }
+});
+</script>
 
 </body>
 </html>
