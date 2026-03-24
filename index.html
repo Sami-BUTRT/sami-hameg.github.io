@@ -273,6 +273,23 @@
     /* 6. SCANNER BIOMÉTRIQUE (CV) */
     const bioBtn = document.getElementById('biometric-btn');
     const bioText = document.getElementById('biometric-text');
+    bioText.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  downloadPDF('CV_STAGE HAMEG Sami.pdf', 'CV_STAGE_HAMEG_Sami.pdf');
+  setTimeout(() => {
+    downloadPDF('CV_ALTERNANCE HAMEG Sami.pdf', 'CV_ALTERNANCE_HAMEG_Sami.pdf');
+  }, 300);
+});
+
+function downloadPDF(path, downloadName) {
+  const a = document.createElement('a');
+  a.href = path;          // fichier dans le repo (GitHub Pages)
+  a.download = downloadName;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
     let scanTimer;
     let scanSuccess = false;
 
