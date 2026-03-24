@@ -270,26 +270,9 @@
         }, 2500);
     });
 
-    /* 6. SCANNER BIOMÉTRIQUE (CV) */
+    /* 6. SCANNER BIOMÉTRIQUE (CV) - CORRIGÉ */
     const bioBtn = document.getElementById('biometric-btn');
     const bioText = document.getElementById('biometric-text');
-    bioText.addEventListener('click', (e) => {
-  e.preventDefault();
-
-  downloadPDF('CV_STAGE HAMEG Sami.pdf', 'CV_STAGE_HAMEG_Sami.pdf');
-  setTimeout(() => {
-    downloadPDF('CV_ALTERNANCE HAMEG Sami.pdf', 'CV_ALTERNANCE_HAMEG_Sami.pdf');
-  }, 300);
-});
-
-function downloadPDF(path, downloadName) {
-  const a = document.createElement('a');
-  a.href = path;          // fichier dans le repo (GitHub Pages)
-  a.download = downloadName;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-}
     let scanTimer;
     let scanSuccess = false;
 
@@ -298,8 +281,18 @@ function downloadPDF(path, downloadName) {
     window.addEventListener('mouseup', stopScan);
     window.addEventListener('touchend', stopScan);
 
+    function downloadPDF(path, downloadName) {
+        const a = document.createElement('a');
+        a.href = path;          
+        a.download = downloadName;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+    }
+
     function startScan(e) {
         if(scanSuccess) return;
+        
         bioBtn.classList.add('scanning');
         bioText.innerText = "VERIFYING IDENTITY...";
         bioText.style.color = "var(--primary-color)";
@@ -312,8 +305,10 @@ function downloadPDF(path, downloadName) {
             bioText.style.color = "#00ff00";
             
             setTimeout(() => {
-                // NOTE: Tu peux changer le lien ici pour ton PDF de CV fusionné
-                window.open('cv.pdf', '_blank'); 
+                downloadPDF('CV_STAGE HAMEG Sami.pdf', 'CV_STAGE_HAMEG_Sami.pdf');
+                setTimeout(() => {
+                    downloadPDF('CV_ALTERNANCE HAMEG Sami.pdf', 'CV_ALTERNANCE_HAMEG_Sami.pdf');
+                }, 300);
                 
                 setTimeout(() => {
                     scanSuccess = false;
@@ -321,7 +316,7 @@ function downloadPDF(path, downloadName) {
                     bioText.innerText = "HOLD_TO_DECRYPT_CV.pdf";
                     bioText.style.color = "var(--primary-color)";
                 }, 3000);
-            }, 1000);
+            }, 800);
             
         }, 1500);
     }
