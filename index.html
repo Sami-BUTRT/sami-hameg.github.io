@@ -4,218 +4,391 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sami Hameg | Portfolio Cybersécurité</title>
-    <meta name="description" content="Portfolio de Sami Hameg — Étudiant en BUT Réseaux & Télécommunications, spécialisé en Cybersécurité.">
-    
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.credly.com; style-src 'self' 'unsafe-inline'; frame-src https://www.credly.com; img-src 'self' data: https://cdn.credly.com https://images.credly.com;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
-    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
-    <meta http-equiv="Cross-Origin-Embedder-Policy" content="credentialless">
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Sami Hameg | Portfolio Cybersécurité">
-    <meta property="og:description" content="Étudiant en BUT Réseaux & Télécommunications, spécialisé en Cybersécurité. Découvrez mes projets et compétences.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sami-hameg.github.io/">
+    <link rel="icon" type="image/jpeg" href="logo_sami.jpg">
     
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🛡️</text></svg>">
-    
-    <!-- External CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Share+Tech+Mono&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.credly.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.credly.com; img-src 'self' data: https://cdn.credly.com https://images.credly.com;">
+<link type="text/css" rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 
-<!-- Navbar -->
+<div id="breach-alert">⚠️ BREACH DETECTED - SYSTEM LOCKDOWN INITIATED ⚠️</div>
+
+<div id="hud-box"></div>
+
+<div id="particles-js"></div>
+<canvas id="matrix-canvas"></canvas>
+
+<div class="scanlines"></div>
+
 <nav class="navbar">
     <div class="navbar-container">
-        <div class="navbar-logo">SH</div>
-        <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
-            ☰
-        </button>
+        <div class="navbar-logo">SAMI_HAMEG<span class="blink">_</span></div>
         <ul class="navbar-menu" id="navbar-menu">
-            <li><a href="#about">À Propos</a></li>
-            <li><a href="#formation">Formation</a></li>
-            <li><a href="#skills">Compétences</a></li>
-            <li><a href="#network-skills">Réseaux</a></li>
-            <li><a href="#projects">Projets</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#contact" class="navbar-cta">Me contacter</a></li>
+            <li><a href="#about">> PROFIL</a></li>
+            <li><a href="#formation">> CURSUS</a></li>
+            <li><a href="#skills">> ARSENAL</a></li>
+            <li><a href="#projects">> LABS</a></li>
+            <li><a href="#contact">> CONTACT</a></li>
         </ul>
     </div>
 </nav>
 
-<header>
-    <h1>Sami Hameg</h1>
-    <p class="subtitle">Étudiant en BUT Réseaux & Télécommunications | Spécialisation Cybersécurité</p>
-    <div class="header-cta">
-        <a href="#contact" class="btn">Me contacter</a>
+<header class="hero">
+    <div class="glitch-wrapper">
+        <h1 class="glitch" data-text="SAMI HAMEG">SAMI HAMEG</h1>
+    </div>
+    <div class="terminal-loader">
+        <p class="typing">Status: <span class="status-online">PROTECTED</span></p>
+        <p class="typing-delayed">Role: BUT R&T - Cybersécurité</p>
+        <p class="typing-interactive-prompt">
+            <span class="terminal-prompt-user">ROOT@SAMI-HAMEG:~$ </span>
+            <input type="text" id="terminal-input" placeholder="Try 'matrix' or 'sudo su'..." autocomplete="off">
+        </p>
+        <p id="terminal-output"></p>
     </div>
 </header>
 
 <div class="container">
     
-    <section id="about">
-        <h2>👤 À Propos de Moi</h2>
-        <div class="card">
-            <div class="about-grid">
-                <div class="about-image-container">
-                    <div class="profile-initial">S</div>
+    <section id="about" class="section reveal-element">
+        <h2 class="section-title decrypt-target" data-text="01. PROFIL_UTILISATEUR">01. PROFIL_UTILISATEUR</h2>
+        <div class="card about-grid">
+            <div class="profile-frame">
+                <div class="profile-initial">SH</div>
+            </div>
+            <div class="about-text">
+                <p>Actuellement en 2ème année de <strong>BUT R&T</strong>, je me spécialise dans la sécurisation des infrastructures et l'analyse de vulnérabilités.</p>
+                
+                <div class="highlight-box" style="border-left: 4px solid var(--primary-color); background: rgba(0, 242, 255, 0.05); margin: 15px 0; padding: 15px;">
+                    <strong style="color: var(--primary-color); font-family: 'JetBrains Mono', monospace;">> REQUÊTE_EN_COURS : DISPONIBILITÉS</strong><br><br>
+                    <span style="color: #00ff00;">[+]</span> <strong style="color: var(--text-main);">STAGE (11 semaines) :</strong> À partir du 17 Avril 2026.<br>
+                    <span style="color: #00ff00;">[+]</span> <strong style="color: var(--text-main);">ALTERNANCE :</strong> À partir de Septembre 2026 (Rythme : 14 / 14 jours).
                 </div>
-                <div class="about-text">
-                    <p>Actuellement en 2ème année de <strong>BUT R&T</strong>, je me spécialise dans la sécurisation des infrastructures et l'analyse de vulnérabilités.</p>
-                    <p>Ma démarche consiste à comprendre le fonctionnement profond des protocoles pour mieux les défendre. Je pratique régulièrement sur des environnements virtualisés et des plateformes de CTF.</p>
-                    <div class="highlight-box">
-                        "Curieux de nature, je vois chaque défi de sécurité comme une opportunité d'approfondir mes connaissances techniques."
+                
+                <div class="highlight-box">
+                    "Curieux et passionné par les défis, je vois chaque faille de sécurité comme une opportunité d'approfondir mes connaissances techniques."
+                </div>
+
+                <div class="biometric-container">
+                    <div id="biometric-btn" class="biometric-box">
+                        <svg class="fingerprint-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10"></path>
+                            <path d="M5 15a7.5 7.5 0 0 1 14 0"></path>
+                            <path d="M8 11.5a4 4 0 0 1 8 0"></path>
+                            <path d="M11 15.5a1 1 0 0 1 2 0"></path>
+                            <path d="M8.5 18a3.5 3.5 0 0 1 7 0"></path>
+                        </svg>
+                        <div class="scan-line"></div>
                     </div>
+                    <p id="biometric-text" class="scan-text">HOLD_TO_DECRYPT_CV.pdf</p>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <section id="formation">
-        <h2>🎓 Formation</h2>
+    <section id="formation" class="section reveal-element">
+        <h2 class="section-title decrypt-target" data-text="02. PARCOURS_ACADEMIQUE">02. PARCOURS_ACADEMIQUE</h2>
         <div class="card">
-            <div class="formation-content">
-                <div class="formation-item">
-                    <p><strong>BUT Réseaux & Télécommunications</strong></p>
-                    <p>Spécialisation Cybersécurité</p>
-                    <p>2ème année (2024-2027)</p>
-                    <p>IUT de Villetaneuse</p>
+            <p><strong>BUT Réseaux & Télécommunications</strong></p>
+            <p>Spécialisation Cybersécurité | 2ème année (2024-2027)</p>
+            <p>> IUT de Villetaneuse</p>
+        </div>
+    </section>
+
+    <section id="skills" class="section reveal-element">
+        <h2 class="section-title decrypt-target" data-text="03. ARSENAL_TECHNIQUE">03. ARSENAL_TECHNIQUE</h2>
+        <div class="skills-grid">
+            <div class="skill-category card">
+                <h3>COMMUNICATION_PROTOCOLS</h3>
+                <div class="tags">
+                    <span class="tag">IP</span><span class="tag">TCP/UDP</span><span class="tag">HTTPS</span><span class="tag">SSH</span>
+                </div>
+            </div>
+            <div class="skill-category card">
+                <h3>ROUTAGE_FLUX</h3>
+                <div class="tags">
+                    <span class="tag hud-tooltip" data-tooltip="Hot Standby Router Protocol">HSRP</span>
+                    <span class="tag hud-tooltip" data-tooltip="Protocole propriétaire Cisco">EIGRP</span>
+                    <span class="tag">OSPF v2/v3</span><span class="tag">Cisco</span>
+                </div>
+            </div>
+            <div class="skill-category card">
+                <h3>DEFENSE_RESEAU</h3>
+                <div class="tags">
+                    <span class="tag">VPN</span><span class="tag">ACL</span><span class="tag">iptables</span>
+                    <span class="tag hud-tooltip" data-tooltip="Intrusion Detection/Prevention">IDS / IPS</span>
+                </div>
+            </div>
+            <div class="skill-category card">
+                <h3>ANALYSE_VULNERABILITES</h3>
+                <div class="tags">
+                    <span class="tag hud-tooltip" data-tooltip="OS Pentest">Kali Linux</span>
+                    <span class="tag hud-tooltip" data-tooltip="Scanner de vulnérabilités">Nessus</span>
+                    <span class="tag">Wireshark</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills">
-        <h2>🛠️ Compétences Techniques</h2>
-        <div class="skills-grid">
-            <div class="tag">Kali Linux</div>
-            <div class="tag">Metasploit</div>
-            <div class="tag">Nessus</div>
-            <div class="tag">Wireshark</div>
-            <div class="tag">Tcpdump</div>
-            <div class="tag">Bash / Python</div>
-            <div class="tag">VirtualBox</div>
-            <div class="tag">GNS3</div>
-        </div>
-    </section>
-
-    <section id="network-skills">
-        <h2>🌐 Expertise Réseaux & Infrastructure</h2>
-        <div class="net-grid">
-            <div class="net-card">
-                <h4>⚡ Routage & Switching</h4>
-                <ul>
-                    <li>Configuration <strong>Cisco Catalyst</strong> (VLANs, Trunking 802.1Q).</li>
-                    <li>Routage dynamique <strong>OSPF v2/v3</strong> et statique.</li>
-                    <li>Protocoles de redondance : <strong>STP/RSTP</strong> et EtherChannel.</li>
-                </ul>
-            </div>
-
-            <div class="net-card">
-                <h4>🛡️ Sécurité & Filtrage</h4>
-                <ul>
-                    <li>Mise en œuvre d'<strong>ACLs étendues</strong> (IPv4/IPv6).</li>
-                    <li>Sécurisation d'accès : <strong>Port-Security</strong> et SSH.</li>
-                    <li>Translation d'adresses (<strong>NAT/PAT</strong>) et VPN IPsec.</li>
-                </ul>
-            </div>
-
-            <div class="net-card">
-                <h4>🔍 Analyse & Services IP</h4>
-                <ul>
-                    <li>Analyse de flux via <strong>Wireshark</strong> et Tcpdump.</li>
-                    <li>Gestion <strong>DHCP Relay</strong>, DNS et supervision SNMP.</li>
-                    <li>Maîtrise des environnements <strong>Linux Server</strong> (Debian).</li>
-                </ul>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="projects">
-        <h2>🚀 Projets</h2>
+    <section id="projects" class="section reveal-element">
+        <h2 class="section-title decrypt-target" data-text="04. PROJETS_ET_LABORATOIRES">04. PROJETS_ET_LABORATOIRES</h2>
         <article class="card">
             <h3>Audit de Sécurité Offensif (Pentesting Lab)</h3>
-            <div class="project-tags">
-                <span class="tag">Offensive Security</span>
-                <span class="tag">Audit Technique</span>
-            </div>
-            <p>Déploiement d'un laboratoire isolé pour simuler des attaques réelles et analyser les vecteurs de compromission.</p>
-            <ul class="project-list">
-                <li>Scan de vulnérabilités critiques via <strong>Nessus</strong>.</li>
-                <li>Exploitation de failles : <span class="vuln-tag">CVE-2010-2075</span> et <span class="vuln-tag">MS08-067</span>.</li>
-                <li>Rédaction d'un rapport avec préconisations de <strong>remédiation</strong>.</li>
-            </ul>
+            <p>Simulation d'attaques et scan de vulnérabilités via <strong>Nessus</strong>. Faille étudiée : <span class="vuln-tag hud-tooltip" data-tooltip="Score CVSS : 10.0 (Critique)">CVE-2010-2075</span>.</p>
             <div class="project-actions">
-                <a href="https://github.com/Sami-BUTRT/Test-d-Intrusion-Complet" class="btn" target="_blank" rel="noopener noreferrer">Consulter sur GitHub</a>
+                <a href="https://github.com/Sami-BUTRT/Test-d-Intrusion-Complet" class="btn" target="_blank">LIRE_LE_RAPPORT.sh</a>
             </div>
         </article>
     </section>
 
-    <section id="certifications">
-        <h2>🏆 Certifications</h2>
-        <div class="card certifications-container">
+    <section id="certifications" class="section reveal-element">
+        <h2 class="section-title decrypt-target" data-text="05. CERTIFICATIONS_VALIDEES">05. CERTIFICATIONS_VALIDEES</h2>
+        <div class="card cert-container">
             <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="b4cc6608-54d9-45ac-8dcf-fdfdc5932d18" data-share-badge-host="https://www.credly.com"></div>
             <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="a406664f-82cf-4f4e-a810-ab75c853c1df" data-share-badge-host="https://www.credly.com"></div>
             <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
         </div>
     </section>
 
-    <section id="contact">
-        <h2>📩 Contact</h2>
-        <div class="card">
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <p><strong>📍 Localisation</strong><br>Marly-la-Ville, France</p>
-                </div>
-                <div class="contact-item">
-                    <p><strong>📧 Email</strong><br><a href="mailto:shameg.pro@gmail.com">shameg.pro@gmail.com</a></p>
-                </div>
-                <div class="contact-item">
-                    <p><strong>🔗 LinkedIn</strong><br><a href="https://www.linkedin.com/in/sami-hameg" target="_blank" rel="noopener noreferrer">Mon profil professionnel</a></p>
-                </div>
+    <section id="contact" class="section reveal-element">
+        <h2 class="section-title decrypt-target" data-text="06. PRENDRE_CONTACT">06. PRENDRE_CONTACT</h2>
+        <div class="card contact-grid" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <p>LOCALISATION: Marly-la-Ville 95670, FR</p>
+                <p>EMAIL: <a href="#" id="email-extract">shameg.pro@gmail.com</a></p>
+                <p>LINKEDIN: <a href="https://www.linkedin.com/in/sami-hameg" target="_blank">/in/sami-hameg</a></p>
             </div>
+            <div class="radar"></div>
         </div>
     </section>
 </div>
 
 <footer>
-    <p>&copy; 2026 Sami Hameg - Étudiant BUT R&T</p>
+    <p>ROOT@SAMI-HAMEG:~$ EXIT | © 2026</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
 <script>
-// Mobile navbar toggle
-document.addEventListener('DOMContentLoaded', function() {
-    const navbarToggle = document.getElementById('navbar-toggle');
-    const navbarMenu = document.getElementById('navbar-menu');
+    /* 1. INITIALISATION DES PARTICULES */
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 60, density: { enable: true, value_area: 800 } },
+            color: { value: '#00f2ff' },
+            shape: { type: 'circle' },
+            opacity: { value: 0.3, random: true },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: '#00f2ff', opacity: 0.2, width: 1 },
+            move: { enable: true, speed: 1.5, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: { onhover: { enable: true, mode: 'grab' } },
+            modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } } }
+        },
+        retina_detect: true
+    });
+
+    /* 2. MODE MATRIX (DIGITAL RAIN) */
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*'.split('');
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+    for(let i=0; i<columns; i++) drops[i] = 1;
     
-    if (navbarToggle && navbarMenu) {
-        navbarToggle.addEventListener('click', function() {
-            navbarMenu.classList.toggle('active');
-        });
+    let matrixInterval;
+    function drawMatrix() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        // Close menu when clicking on a link
-        const navLinks = navbarMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navbarMenu.classList.remove('active');
-            });
-        });
+        const isRed = document.body.classList.contains('red-alert');
+        ctx.fillStyle = isRed ? '#ff003c' : '#00ff41';
         
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!navbarToggle.contains(event.target) && !navbarMenu.contains(event.target)) {
-                navbarMenu.classList.remove('active');
-            }
-        });
+        ctx.font = fontSize + 'px monospace';
+        for(let i=0; i<drops.length; i++) {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+            if(drops[i]*fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+        }
     }
-});
+
+    /* 3. EFFETS DE SCROLL ET HUD */
+    const revealElements = document.querySelectorAll('.reveal-element');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('revealed'); });
+    }, { threshold: 0.1 });
+    revealElements.forEach(el => observer.observe(el));
+
+    const hudBox = document.getElementById('hud-box');
+    document.querySelectorAll('.hud-tooltip').forEach(el => {
+        el.addEventListener('mouseenter', () => { hudBox.innerText = el.getAttribute('data-tooltip'); hudBox.style.opacity = '1'; });
+        el.addEventListener('mousemove', (e) => { hudBox.style.left = (e.clientX + 15) + 'px'; hudBox.style.top = (e.clientY + 15) + 'px'; });
+        el.addEventListener('mouseleave', () => { hudBox.style.opacity = '0'; });
+    });
+
+    /* 4. DÉCRYPTAGE AU SURVOL */
+    const decryptTargets = document.querySelectorAll('.decrypt-target');
+    const decryptChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+    decryptTargets.forEach(target => {
+        const originalText = target.dataset.text;
+        target.addEventListener('mouseover', () => {
+            let iteration = 0;
+            const interval = setInterval(() => {
+                target.innerText = originalText.split('').map((char, index) => {
+                    if (index < iteration) return originalText[index];
+                    return decryptChars[Math.floor(Math.random() * decryptChars.length)];
+                }).join('');
+                if (iteration >= originalText.length) clearInterval(interval);
+                iteration += 1 / 3;
+            }, 30);
+        });
+        target.addEventListener('mouseout', () => target.innerText = originalText);
+    });
+
+    /* 5. EXTRACTION DE DONNÉES (PRESSE-PAPIERS) */
+    const emailLink = document.getElementById('email-extract');
+    emailLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigator.clipboard.writeText('shameg.pro@gmail.com');
+        const original = emailLink.innerText;
+        emailLink.innerText = '[ DATA EXTRACTED SUCCESSFULLY ]';
+        emailLink.classList.add('extracted');
+        
+        setTimeout(() => {
+            emailLink.innerText = original;
+            emailLink.classList.remove('extracted');
+        }, 2500);
+    });
+
+    /* 6. SCANNER BIOMÉTRIQUE (CV) */
+    const bioBtn = document.getElementById('biometric-btn');
+    const bioText = document.getElementById('biometric-text');
+    let scanTimer;
+    let scanSuccess = false;
+
+    bioBtn.addEventListener('mousedown', startScan);
+    bioBtn.addEventListener('touchstart', startScan);
+    window.addEventListener('mouseup', stopScan);
+    window.addEventListener('touchend', stopScan);
+
+    function startScan(e) {
+        if(scanSuccess) return;
+        bioBtn.classList.add('scanning');
+        bioText.innerText = "VERIFYING IDENTITY...";
+        bioText.style.color = "var(--primary-color)";
+        
+        scanTimer = setTimeout(() => {
+            scanSuccess = true;
+            bioBtn.classList.remove('scanning');
+            bioBtn.classList.add('granted');
+            bioText.innerText = "[ ACCESS GRANTED ] - DOWNLOADING...";
+            bioText.style.color = "#00ff00";
+            
+            setTimeout(() => {
+                // NOTE: Tu peux changer le lien ici pour ton PDF de CV fusionné
+                window.open('cv.pdf', '_blank'); 
+                
+                setTimeout(() => {
+                    scanSuccess = false;
+                    bioBtn.classList.remove('granted');
+                    bioText.innerText = "HOLD_TO_DECRYPT_CV.pdf";
+                    bioText.style.color = "var(--primary-color)";
+                }, 3000);
+            }, 1000);
+            
+        }, 1500);
+    }
+
+    function stopScan() {
+        clearTimeout(scanTimer);
+        if(!scanSuccess && bioBtn.classList.contains('scanning')) {
+            bioBtn.classList.remove('scanning');
+            bioText.innerText = "ACCESS DENIED - HOLD LONGER";
+            bioText.style.color = "var(--accent-color)";
+            setTimeout(() => {
+                if(!scanSuccess) {
+                    bioText.innerText = "HOLD_TO_DECRYPT_CV.pdf";
+                    bioText.style.color = "var(--primary-color)";
+                }
+            }, 1500);
+        }
+    }
+
+    /* 7. TERMINAL, RED ALERT & MATRIX TOGGLE */
+    const terminalInput = document.getElementById('terminal-input');
+    const terminalOutput = document.getElementById('terminal-output');
+    
+    document.querySelector('.typing').style.animation = 'typing-sequence 2s steps(17) forwards';
+    setTimeout(() => { document.querySelector('.typing-delayed').style.animation = 'typing-sequence 2s steps(28) forwards'; document.querySelector('.typing-delayed').style.opacity = '1'; }, 2400);
+    setTimeout(() => { document.querySelector('.typing-interactive-prompt').style.opacity = '1'; }, 4600);
+
+    terminalInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const command = terminalInput.value.toLowerCase().trim();
+            terminalInput.value = '';
+            
+            if (command === 'clear') {
+                terminalOutput.innerText = '';
+            } 
+            else if (command === 'whoami') {
+                terminalOutput.innerText = '> SYSTEM USER: SAMI HAMEG. ROLE: CYBERSECURITY STUDENT.';
+            } 
+            else if (command === 'sudo su' || command === 'alert') {
+                document.body.classList.toggle('red-alert');
+                const isRed = document.body.classList.contains('red-alert');
+                
+                if (isRed) {
+                    terminalOutput.innerHTML = '<span style="color:#ff003c; font-weight:bold;">> CRITICAL WARNING: ROOT ACCESS BREACH DETECTED.</span>';
+                    document.querySelector('.status-online').style.color = '#ff003c';
+                    document.querySelector('.status-online').innerText = 'COMPROMISED';
+                } else {
+                    terminalOutput.innerText = '> SYSTEM RESTORED TO SECURE STATE.';
+                    document.querySelector('.status-online').style.color = '#00ff00';
+                    document.querySelector('.status-online').innerText = 'PROTECTED';
+                }
+                
+                if(window.pJSDom && window.pJSDom.length > 0) {
+                    const pjs = window.pJSDom[0].pJS;
+                    const color = isRed ? '#ff003c' : '#00f2ff';
+                    pjs.particles.color.value = color;
+                    pjs.particles.line_linked.color = color;
+                    pjs.fn.particlesRefresh();
+                }
+            } 
+            else if (command === 'matrix') {
+                document.body.classList.toggle('matrix-mode');
+                if (document.body.classList.contains('matrix-mode')) {
+                    document.getElementById('particles-js').style.display = 'none';
+                    canvas.style.display = 'block';
+                    if(!matrixInterval) matrixInterval = setInterval(drawMatrix, 33);
+                    terminalOutput.innerText = '> WAKE UP, NEO. MATRIX PROTOCOL INITIATED.';
+                } else {
+                    document.getElementById('particles-js').style.display = 'block';
+                    canvas.style.display = 'none';
+                    clearInterval(matrixInterval);
+                    matrixInterval = null;
+                    terminalOutput.innerText = '> MATRIX PROTOCOL DEACTIVATED.';
+                }
+            }
+            else if (command === '') {
+                terminalOutput.innerText = '';
+            } else {
+                terminalOutput.innerText = `> COMMAND NOT FOUND: ${command}. Try 'matrix', 'sudo su', 'whoami', 'clear'.`;
+            }
+        }
+    });
 </script>
 
+<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
