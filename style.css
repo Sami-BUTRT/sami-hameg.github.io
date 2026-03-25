@@ -85,11 +85,11 @@ body.red-alert .radar { background: repeating-radial-gradient(transparent, trans
 .reveal-element.revealed { opacity: 1; transform: translateY(0); }
 .decrypt-target { cursor: default; }
 
-/* --- NOUVEAU: EXTRACTION DE DONNÉES (PRESSE-PAPIERS) --- */
+/* --- EXTRACTION DE DONNÉES (PRESSE-PAPIERS) --- */
 .extracted { color: #00ff00 !important; font-weight: bold; font-family: 'JetBrains Mono', monospace; animation: glitch-anim 0.2s infinite; text-shadow: 0 0 10px #00ff00; }
 @keyframes glitch-anim { 0% { transform: translate(0) } 20% { transform: translate(-2px, 2px) } 40% { transform: translate(-2px, -2px) } 60% { transform: translate(2px, 2px) } 80% { transform: translate(2px, -2px) } 100% { transform: translate(0) } }
 
-/* --- NOUVEAU: SCANNER BIOMÉTRIQUE POUR CV --- */
+/* --- SCANNER BIOMÉTRIQUE POUR CV --- */
 .biometric-container { margin-top: 25px; display: flex; flex-direction: column; align-items: flex-start; }
 .biometric-box { width: 70px; height: 70px; border: 2px dashed var(--primary-color); border-radius: 10px; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; overflow: hidden; transition: 0.3s; background: rgba(0, 242, 255, 0.05); }
 .biometric-box:hover { box-shadow: var(--glow); background: rgba(0, 242, 255, 0.1); }
@@ -107,4 +107,41 @@ body.red-alert .radar { background: repeating-radial-gradient(transparent, trans
     0% { top: -10%; }
     50% { top: 100%; }
     100% { top: -10%; }
+}
+
+/* --- CONTACT FORM STYLING --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--primary-color);
+    font-size: 0.8rem;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 242, 255, 0.2);
+    padding: 10px;
+    color: var(--text-main);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: var(--glow);
 }
