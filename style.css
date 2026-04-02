@@ -1,110 +1,464 @@
-:root {
-    --bg-color: #05080a;
-    --surface-color: #0d1217;
-    --primary-color: #00f2ff; 
-    --accent-color: #ff0055;
-    --text-main: #e0e6ed;
-    --text-dim: #64748b;
-    --glow: 0 0 15px rgba(0, 242, 255, 0.3);
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sami Hameg | Portfolio Cybersécurité</title>
 
-/* --- THEME RED ALERT --- */
-body.red-alert {
-    --primary-color: #ff003c;
-    --glow: 0 0 20px rgba(255, 0, 60, 0.6);
-    --bg-color: #1a0505;
-    --surface-color: #2a0808;
-    background-image: linear-gradient(rgba(255, 0, 60, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 0, 60, 0.05) 1px, transparent 1px);
-}
-body.red-alert .scanlines { opacity: 0.25; background: linear-gradient(rgba(255, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.25) 50%); }
-#breach-alert { display: none; position: fixed; top: 0; left: 0; width: 100%; background: #ff003c; color: #fff; text-align: center; font-family: 'JetBrains Mono', monospace; font-weight: bold; padding: 10px; z-index: 10000; animation: fast-blink 0.5s infinite; }
-body.red-alert #breach-alert { display: block; }
-@keyframes fast-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    <link rel="icon" type="image/jpeg" href="logo_sami.jpeg">
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Share+Tech+Mono&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 
-/* --- CURSEUR & BASE --- */
-* { cursor: crosshair; }
-body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Inter', sans-serif; background-image: linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px); background-size: 40px 40px; line-height: 1.6; position: relative; z-index: 0; transition: background-color 0.5s ease; }
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.credly.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.credly.com; img-src 'self' data: https://cdn.credly.com https://images.credly.com;">
+<link type="text/css" rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
 
-/* Backgrounds */
-#particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-#matrix-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; display: none; }
-.scanlines { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%); background-size: 100% 4px; z-index: 9999; pointer-events: none; opacity: 0.1; }
-.blink { animation: blinker 1s linear infinite; } @keyframes blinker { 50% { opacity: 0; } }
+<div id="breach-alert">⚠️ BREACH DETECTED - SYSTEM LOCKDOWN INITIATED ⚠️</div>
 
-/* --- NAVBAR --- */
-.navbar { background: rgba(5, 8, 10, 0.95); border-bottom: 2px solid var(--primary-color); padding: 1rem; position: fixed; width: 100%; top: 0; z-index: 100; transition: border-color 0.5s; }
-body.red-alert .navbar { background: rgba(26, 5, 5, 0.95); }
-.navbar-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-.navbar-logo { font-family: 'JetBrains Mono', monospace; color: var(--primary-color); text-shadow: var(--glow); font-weight: bold; cursor: default; }
-.navbar-menu { display: flex; list-style: none; gap: 20px; }
-.navbar-menu a { text-decoration: none; color: var(--text-dim); font-family: 'Share Tech Mono', monospace; font-size: 0.9rem; transition: 0.3s; cursor: pointer; }
-.navbar-menu a:hover { color: var(--primary-color); text-shadow: var(--glow); transform: translateY(-2px); }
+<div id="hud-box"></div>
 
-/* --- HERO SECTION & TERMINAL --- */
-.hero { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; margin-top: 60px; }
-.glitch { font-size: 3.5rem; font-family: 'JetBrains Mono', monospace; color: var(--primary-color); text-shadow: var(--glow); }
+<div id="particles-js"></div>
+<canvas id="matrix-canvas"></canvas>
 
-.terminal-loader { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--text-main); background: rgba(0, 0, 0, 0.6); padding: 15px; border-radius: 5px; margin-top: 10px; width: 450px; text-align: left; border: 1px solid var(--primary-color); }
-.status-online { color: #00ff00; }
-.typing-sequence { display: inline-block; overflow: hidden; white-space: nowrap; border-right: 2px solid var(--primary-color); width: 0ch; opacity: 0;}
-@keyframes typing-sequence { from { width: 0; } to { width: 100%; border-color: transparent; } }
-.typing-interactive-prompt { margin-top: 10px; transition: opacity 0.5s; opacity: 0;}
-.terminal-prompt-user { color: var(--primary-color); font-weight: bold; }
-#terminal-input { background: transparent; border: none; color: var(--text-main); font-family: inherit; font-size: inherit; outline: none; width: 60%; }
-#terminal-output { color: var(--text-dim); margin-top: 5px; }
+<div class="scanlines"></div>
 
-/* --- SECTIONS & CARDS --- */
-.container { max-width: 900px; margin: 0 auto; padding: 20px; }
-.section-title { font-family: 'Share Tech Mono', monospace; color: var(--primary-color); margin: 40px 0 20px; border-left: 4px solid var(--primary-color); padding-left: 15px; cursor: default; transition: 0.5s; }
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-logo">SAMI_HAMEG<span class="blink">_</span></div>
+        <ul class="navbar-menu" id="navbar-menu">
+            <li><a href="#about">> PROFIL</a></li>
+            <li><a href="#formation">> CURSUS</a></li>
+            <li><a href="#skills">> ARSENAL</a></li>
+            <li><a href="#projects">> LABS</a></li>
+            <li><a href="#contact">> CONTACT</a></li>
+            <li><a href="#hobbies">> INTÉRÊTS</a></li>
+            <li><a href="#rgpd">> RGPD</a></li>
+        </ul>
+    </div>
+</nav>
 
-.card { background: var(--surface-color); border: 1px solid #1a2633; padding: 25px; position: relative; transition: 0.3s; }
-.card:hover { border-color: var(--primary-color); box-shadow: var(--glow); }
-body.red-alert .card { border-color: #4a0d0d; }
+<header class="hero">
+    <div class="glitch-wrapper">
+        <h1 class="glitch" data-text="SAMI HAMEG">SAMI HAMEG</h1>
+    </div>
+    <div class="terminal-loader">
+        <p class="typing">Status: <span class="status-online">PROTECTED</span></p>
+        <p class="typing-delayed">Role: BUT R&T - Cybersécurité</p>
+        <p class="typing-interactive-prompt">
+            <span class="terminal-prompt-user">ROOT@SAMI-HAMEG:~$ </span>
+            <input type="text" id="terminal-input" placeholder="Try 'matrix' or 'sudo su'..." autocomplete="off">
+        </p>
+        <p id="terminal-output"></p>
+    </div>
+</header>
 
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-.skill-category h3 { font-family: 'Share Tech Mono', monospace; color: var(--primary-color); font-size: 1rem; margin-bottom: 15px; border-bottom: 1px solid rgba(0, 242, 255, 0.2); padding-bottom: 5px; }
+<div class="container">
+    
+    <section id="about" class="section reveal-element">
+        <h2 class="section-title decrypt-target" data-text="01. PROFIL_UTILISATEUR">01. PROFIL_UTILISATEUR</h2>
+        <div class="card about-grid">
+            <div class="profile-frame">
+                <div class="profile-initial">SH</div>
+            </div>
+            <div class="about-text">
+                <p>Actuellement en 2ème année de <strong>BUT R&T</strong>, je me spécialise dans la sécurisation des infrastructures et l'analyse de vulnérabilités.</p>
+                
+                <div class="highlight-box" style="border-left: 4px solid var(--primary-color); background: rgba(0, 242, 255, 0.05); margin: 15px 0; padding: 15px;">
+                    <strong style="color: var(--primary-color); font-family: 'JetBrains Mono', monospace;">> REQUÊTE_EN_COURS : DISPONIBILITÉS</strong><br><br>
+                    <span style="color: #00ff00;">[+]</span> <strong style="color: var(--text-main);">STAGE (11 semaines) :</strong> À partir du 17 Avril 2026.<br>
+                    <span style="color: #00ff00;">[+]</span> <strong style="color: var(--text-main);">ALTERNANCE :</strong> À partir de Septembre 2026 (Rythme : 14 / 14 jours).
+                </div>
+                
+                <div class="highlight-box">
+                    "Curieux et passionné par les défis, je vois chaque faille de sécurité comme une opportunité d'approfondir mes connaissances techniques."
+                </div>
 
-.tag { display: inline-block; padding: 4px 10px; background: rgba(0, 242, 255, 0.1); border: 1px solid var(--primary-color); color: var(--primary-color); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; margin: 4px; cursor: default; transition: 0.3s; }
-body.red-alert .tag { background: rgba(255, 0, 60, 0.1); }
-.vuln-tag { color: var(--accent-color); font-weight: bold; border-bottom: 1px dashed var(--accent-color); }
+                <div class="biometric-container">
+                    <div id="biometric-btn" class="biometric-box">
+                        <svg class="fingerprint-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10"></path>
+                            <path d="M5 15a7.5 7.5 0 0 1 14 0"></path>
+                            <path d="M8 11.5a4 4 0 0 1 8 0"></path>
+                            <path d="M11 15.5a1 1 0 0 1 2 0"></path>
+                            <path d="M8.5 18a3.5 3.5 0 0 1 7 0"></path>
+                        </svg>
+                        <div class="scan-line"></div>
+                    </div>
+                    <p id="biometric-text" class="scan-text">HOLD_TO_DECRYPT_CV.pdf</p>
+                </div>
 
-.btn { display: inline-block; padding: 10px 20px; border: 1px solid var(--primary-color); color: var(--primary-color); text-decoration: none; font-family: 'Share Tech Mono', monospace; transition: 0.3s; background: transparent; cursor: pointer; }
-.btn:hover { background: var(--primary-color); color: var(--bg-color); box-shadow: var(--glow); }
-.cert-container { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
-footer { text-align: center; padding: 60px; font-family: 'Share Tech Mono', monospace; color: var(--text-dim); }
-a { color: var(--primary-color); text-decoration: none; cursor: pointer; }
+            </div>
+        </div>
+    </section>
 
-/* --- HUD & RADAR --- */
-#hud-box { position: fixed; pointer-events: none; background: rgba(5, 8, 10, 0.95); border: 1px solid var(--primary-color); box-shadow: var(--glow); color: var(--text-main); padding: 8px 12px; font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; z-index: 10000; opacity: 0; transition: opacity 0.2s; }
-.hud-tooltip { cursor: help; }
-.radar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--primary-color); position: relative; overflow: hidden; background: repeating-radial-gradient(transparent, transparent 10px, rgba(0, 242, 255, 0.1) 11px); box-shadow: var(--glow); }
-body.red-alert .radar { background: repeating-radial-gradient(transparent, transparent 10px, rgba(255, 0, 60, 0.1) 11px); }
-.radar::before { content: ''; position: absolute; top: 50%; left: 50%; width: 50%; height: 50%; background: conic-gradient(from 0deg, transparent 70%, var(--primary-color) 100%); transform-origin: 0 0; animation: spin 2s linear infinite; }
-@keyframes spin { 100% { transform: rotate(360deg); } }
-.reveal-element { opacity: 0; transform: translateY(30px); transition: opacity 1s ease-out, transform 1s ease-out; }
-.reveal-element.revealed { opacity: 1; transform: translateY(0); }
-.decrypt-target { cursor: default; }
+    <section id="formation" class="section reveal-element">
+        <h2 class="section-title decrypt-target" data-text="02. PARCOURS_ACADEMIQUE">02. PARCOURS_ACADEMIQUE</h2>
+        <div class="card">
+            <p><strong>BUT Réseaux & Télécommunications</strong></p>
+            <p>Spécialisation Cybersécurité | 2ème année (2024-2027)</p>
+            <p>> Université Sorbonne Paris Nord - Villetaneuse</p>
+        </div>
+    </section>
 
-/* --- EXTRACTION DE DONNÉES (PRESSE-PAPIERS) --- */
-.extracted { color: #00ff00 !important; font-weight: bold; font-family: 'JetBrains Mono', monospace; animation: glitch-anim 0.2s infinite; text-shadow: 0 0 10px #00ff00; }
-@keyframes glitch-anim { 0% { transform: translate(0) } 20% { transform: translate(-2px, 2px) } 40% { transform: translate(-2px, -2px) } 60% { transform: translate(2px, 2px) } 80% { transform: translate(2px, -2px) } 100% { transform: translate(0) } }
+    <section id="skills" class="section reveal-element">
+        <h2 class="section-title decrypt-target" data-text="03. ARSENAL_TECHNIQUE">03. ARSENAL_TECHNIQUE</h2>
+        <div class="skills-grid">
+            
+            <div class="skill-category card">
+                <h3>ADMINISTRER LES RÉSEAUX</h3>
+                <p style="color: var(--primary-color); font-size: 0.85rem; margin-bottom: 5px;">> Protocoles/Routages :</p>
+                <div class="tags">
+                    <span class="tag">EIGRP</span><span class="tag">HSRP</span><span class="tag">ACL</span><span class="tag">IPv4/IPv6</span><span class="tag">MPLS</span>
+                </div>
+                <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Services :</p>
+                <div class="tags">
+                    <span class="tag">DNS</span><span class="tag">DHCP</span><span class="tag">HTTP</span><span class="tag">SSH</span>
+                </div>
+                <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Virtualisation et Analyse :</p>
+                <div class="tags">
+                    <span class="tag">Wireshark</span><span class="tag">GNS3</span><span class="tag">Packet Tracer</span><span class="tag">VirtualBox</span><span class="tag">Linux</span>
+                </div>
+            </div>
 
-/* --- SCANNER BIOMÉTRIQUE POUR CV --- */
-.biometric-container { margin-top: 25px; display: flex; flex-direction: column; align-items: flex-start; }
-.biometric-box { width: 70px; height: 70px; border: 2px dashed var(--primary-color); border-radius: 10px; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; overflow: hidden; transition: 0.3s; background: rgba(0, 242, 255, 0.05); }
-.biometric-box:hover { box-shadow: var(--glow); background: rgba(0, 242, 255, 0.1); }
-.fingerprint-svg { width: 40px; height: 40px; stroke: var(--primary-color); transition: 0.3s; }
-.scan-line { position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: #00ff00; box-shadow: 0 0 10px #00ff00; opacity: 0; pointer-events: none; }
-.scan-text { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--primary-color); margin-top: 10px; font-weight: bold; transition: 0.3s; }
+            <div class="skill-category card">
+                <h3>ADMINISTRER UN SI SÉCURISÉ</h3>
+                <p style="color: var(--primary-color); font-size: 0.85rem; margin-bottom: 5px;">> Microsoft :</p>
+                <div class="tags">
+                    <span class="tag">Windows Server 2025</span><span class="tag">Active Directory</span><span class="tag">GPO</span>
+                </div>
+                <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Sécurité Accès :</p>
+                <div class="tags">
+                    <span class="tag">Firewalling</span><span class="tag">VPN</span><span class="tag">DNS Sécurisé</span><span class="tag">Délégation de droits</span>
+                </div>
+                <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Automatisation :</p>
+                <div class="tags">
+                    <span class="tag">PowerShell</span><span class="tag">Bash</span>
+                </div>
+            </div>
 
-/* Animations du Scanner */ 
-.biometric-box.scanning .fingerprint-svg { stroke: #00ff00; opacity: 0.5; }
-.biometric-box.scanning .scan-line { opacity: 1; animation: scan-up-down 1.5s linear infinite; }
-.biometric-box.granted { border-color: #00ff00; background: rgba(0, 255, 0, 0.1); border-style: solid; box-shadow: 0 0 20px rgba(0,255,0,0.4); }
-.biometric-box.granted .fingerprint-svg { stroke: #00ff00; }
+            <div class="skill-category card">
+                <h3>SURVEILLER UN SI SÉCURISÉ</h3>
+                <p style="color: var(--primary-color); font-size: 0.85rem; margin-bottom: 5px;">> Audit/Détection :</p>
+                <div class="tags">
+                    <span class="tag">IDS/IPS</span><span class="tag">Nessus</span><span class="tag">Analyse de logs</span>
+                </div>
+                <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Sécurité Offensive :</p>
+                <div class="tags">
+                    <span class="tag">Kali Linux</span><span class="tag">Burp Suite</span><span class="tag">Metasploitable</span><span class="tag">Root-Me</span>
+                </div>
+                <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Analyse de risques :</p>
+                <div class="tags">
+                    <span class="tag">Recherche d'IoC</span><span class="tag">Rapports d'audit</span>
+                </div>
+            </div>
 
-@keyframes scan-up-down {
-    0% { top: -10%; }
-    50% { top: 100%; }
-    100% { top: -10%; }
-}
+        </div>
+    </section>
+
+    <section id="projects" class="section reveal-element">
+        <h2 class="section-title decrypt-target" data-text="04. PROJETS_ET_LABORATOIRES">04. PROJETS_ET_LABORATOIRES</h2>
+        <article class="card">
+            <h3>Audit de Sécurité Offensif (Pentesting Lab)</h3>
+            
+            <p><strong>Offensive Security Audit Technique</strong></p>
+            <p>Déploiement d'un laboratoire isolé pour simuler des attaques réelles et analyser les vecteurs de compromission.</p>
+            
+            <ul style="list-style-type: none; padding-left: 0; margin-top: 10px;">
+                <li><span style="color: #00ff00;">[+]</span> Scan de vulnérabilités critiques via <strong>Nessus</strong>.</li>
+                <li><span style="color: #00ff00;">[+]</span> Exploitation de failles : 
+                    <span class="vuln-tag hud-tooltip" data-tooltip="Score CVSS : 10.0 (Critique)">CVE-2010-2075</span> 
+                    et 
+                    <span class="vuln-tag hud-tooltip" data-tooltip="Score CVSS : 10.0 (Critique)">MS08-067</span>.
+                </li>
+                <li><span style="color: #00ff00;">[+]</span> Rédaction d'un <strong>rapport</strong> avec préconisations de <strong>remédiation</strong>.</li>
+            </ul>
+
+            <div class="project-actions" style="margin-top: 20px;">
+                <a href="https://github.com/Sami-BUTRT/Test-d-Intrusion-Complet" class="btn" target="_blank">LIRE_LE_RAPPORT(Github)</a>
+            </div>
+        </article>
+    </section>
+
+    <section id="certifications" class="section reveal-element">
+        <h2 class="section-title decrypt-target" data-text="05. CERTIFICATIONS_VALIDEES">05. CERTIFICATIONS_VALIDEES</h2>
+        <div class="card cert-container">
+            <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="b4cc6608-54d9-45ac-8dcf-fdfdc5932d18" data-share-badge-host="https://www.credly.com"></div>
+            <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="a406664f-82cf-4f4e-a810-ab75c853c1df" data-share-badge-host="https://www.credly.com"></div>
+            <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+        </div>
+    </section>
+
+    <section id="contact" class="section reveal-element">
+        <h2 class="section-title decrypt-target" data-text="06. PRENDRE_CONTACT">06. PRENDRE_CONTACT</h2>
+        <div class="card contact-grid" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <p>LOCALISATION: Marly-la-Ville 95670, FR</p>
+                <p>EMAIL: <a href="#" id="email-extract">contact@samihameg.page</a></p>
+                <p>LINKEDIN: <a href="https://www.linkedin.com/in/sami-hameg" target="_blank">/in/sami-hameg</a></p>
+            </div>
+            <div class="radar"></div>
+        </div>
+    </section>
+
+    <section id="hobbies" class="section reveal-element">
+        <h2 class="section-title decrypt-target" data-text="07. CENTRES_D_INTERETS">07. CENTRES_D_INTERETS</h2>
+        <div class="card">
+            <ul style="list-style-type: none; padding-left: 0; margin: 0;">
+                <li style="margin-bottom: 10px;"><span style="color: #00ff00;">[+]</span> Participation régulière sur plateforme CTF <strong>Root-Me</strong></li>
+                <li style="margin-bottom: 10px;"><span style="color: #00ff00;">[+]</span> Adhérent de l'association <strong>CyberV</strong></li>
+                <li><span style="color: #00ff00;">[+]</span> <strong>Jeux de stratégies</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="rgpd" class="section reveal-element">
+        <h2 class="section-title decrypt-target" data-text="08. CONFORMITE_RGPD">08. CONFORMITE_RGPD</h2>
+        <div class="card" style="border-left: 4px solid var(--accent-color); background: rgba(255, 0, 85, 0.05);">
+            <p style="font-family: 'JetBrains Mono', monospace; color: var(--accent-color); margin-bottom: 10px;"><strong>>_ AVIS_DE_CONFIDENTIALITÉ</strong></p>
+            <p>Ce portfolio est conçu dans le plus strict respect de la vie privée.</p>
+            <ul style="list-style-type: none; padding-left: 0; margin-top: 10px;">
+                <li><span style="color: #00ff00;">[+]</span> <strong>Aucune collecte :</strong> Je ne récolte, ne stocke ni ne partage aucune de vos données personnelles.</li>
+                <li><span style="color: #00ff00;">[+]</span> <strong>Zéro tracking :</strong> Ce site n'utilise aucun cookie de pistage publicitaire ou d'analyse intrusif.</li>
+                <li><span style="color: #00ff00;">[+]</span> Votre navigation reste strictement locale et confidentielle.</li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>ROOT@SAMI-HAMEG:~$ EXIT | © 2026</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<script>
+    /* 1. INITIALISATION DES PARTICULES */
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 60, density: { enable: true, value_area: 800 } },
+            color: { value: '#00f2ff' },
+            shape: { type: 'circle' },
+            opacity: { value: 0.3, random: true },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: '#00f2ff', opacity: 0.2, width: 1 },
+            move: { enable: true, speed: 1.5, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: { onhover: { enable: true, mode: 'grab' } },
+            modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } } }
+        },
+        retina_detect: true
+    });
+
+    /* 2. MODE MATRIX (DIGITAL RAIN) */
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*'.split('');
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+    for(let i=0; i<columns; i++) drops[i] = 1;
+    
+    let matrixInterval;
+    function drawMatrix() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        const isRed = document.body.classList.contains('red-alert');
+        ctx.fillStyle = isRed ? '#ff003c' : '#00ff41';
+        
+        ctx.font = fontSize + 'px monospace';
+        for(let i=0; i<drops.length; i++) {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+            if(drops[i]*fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+        }
+    }
+
+    /* 3. EFFETS DE SCROLL ET HUD */
+    const revealElements = document.querySelectorAll('.reveal-element');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('revealed'); });
+    }, { threshold: 0.1 });
+    revealElements.forEach(el => observer.observe(el));
+
+    const hudBox = document.getElementById('hud-box');
+    document.querySelectorAll('.hud-tooltip').forEach(el => {
+        el.addEventListener('mouseenter', () => { hudBox.innerText = el.getAttribute('data-tooltip'); hudBox.style.opacity = '1'; });
+        el.addEventListener('mousemove', (e) => { hudBox.style.left = (e.clientX + 15) + 'px'; hudBox.style.top = (e.clientY + 15) + 'px'; });
+        el.addEventListener('mouseleave', () => { hudBox.style.opacity = '0'; });
+    });
+
+    /* 4. DÉCRYPTAGE AU SURVOL */
+    const decryptTargets = document.querySelectorAll('.decrypt-target');
+    const decryptChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+    decryptTargets.forEach(target => {
+        const originalText = target.dataset.text;
+        target.addEventListener('mouseover', () => {
+            let iteration = 0;
+            const interval = setInterval(() => {
+                target.innerText = originalText.split('').map((char, index) => {
+                    if (index < iteration) return originalText[index];
+                    return decryptChars[Math.floor(Math.random() * decryptChars.length)];
+                }).join('');
+                if (iteration >= originalText.length) clearInterval(interval);
+                iteration += 1 / 3;
+            }, 30);
+        });
+        target.addEventListener('mouseout', () => target.innerText = originalText);
+    });
+
+    /* 5. EXTRACTION DE DONNÉES (PRESSE-PAPIERS) */
+    const emailLink = document.getElementById('email-extract');
+    emailLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigator.clipboard.writeText('contact@samihameg.page');
+        const original = emailLink.innerText;
+        emailLink.innerText = '[ DATA EXTRACTED SUCCESSFULLY ]';
+        emailLink.classList.add('extracted');
+        
+        setTimeout(() => {
+            emailLink.innerText = original;
+            emailLink.classList.remove('extracted');
+        }, 2500);
+    });
+
+    /* 6. SCANNER BIOMÉTRIQUE (CV) - CORRIGÉ */
+    const bioBtn = document.getElementById('biometric-btn');
+    const bioText = document.getElementById('biometric-text');
+    let scanTimer;
+    let scanSuccess = false;
+
+    bioBtn.addEventListener('mousedown', startScan);
+    bioBtn.addEventListener('touchstart', startScan);
+    window.addEventListener('mouseup', stopScan);
+    window.addEventListener('touchend', stopScan);
+
+    function downloadPDF(path, downloadName) {
+        const a = document.createElement('a');
+        a.href = path;          
+        a.download = downloadName;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+    }
+
+    function startScan(e) {
+        if(scanSuccess) return;
+        
+        bioBtn.classList.add('scanning');
+        bioText.innerText = "VERIFYING IDENTITY...";
+        bioText.style.color = "var(--primary-color)";
+        
+        scanTimer = setTimeout(() => {
+            scanSuccess = true;
+            bioBtn.classList.remove('scanning');
+            bioBtn.classList.add('granted');
+            bioText.innerText = "[ ACCESS GRANTED ] - DOWNLOADING...";
+            bioText.style.color = "#00ff00";
+            
+            setTimeout(() => {
+                downloadPDF('CV_STAGE_HAMEG_Sami.pdf', 'CV_STAGE_HAMEG_Sami.pdf');
+                setTimeout(() => {
+                    downloadPDF('CV_ALTERNANCE_HAMEG_Sami.pdf', 'CV_ALTERNANCE_HAMEG_Sami.pdf');
+                }, 300);
+                
+                setTimeout(() => {
+                    scanSuccess = false;
+                    bioBtn.classList.remove('granted');
+                    bioText.innerText = "HOLD_TO_DECRYPT_CV.pdf";
+                    bioText.style.color = "var(--primary-color)";
+                }, 3000);
+            }, 800);
+            
+        }, 1500);
+    }
+
+    function stopScan() {
+        clearTimeout(scanTimer);
+        if(!scanSuccess && bioBtn.classList.contains('scanning')) {
+            bioBtn.classList.remove('scanning');
+            bioText.innerText = "ACCESS DENIED - HOLD LONGER";
+            bioText.style.color = "var(--accent-color)";
+            setTimeout(() => {
+                if(!scanSuccess) {
+                    bioText.innerText = "HOLD_TO_DECRYPT_CV.pdf";
+                    bioText.style.color = "var(--primary-color)";
+                }
+            }, 1500);
+        }
+    }
+
+    /* 7. TERMINAL, RED ALERT & MATRIX TOGGLE */
+    const terminalInput = document.getElementById('terminal-input');
+    const terminalOutput = document.getElementById('terminal-output');
+    
+    document.querySelector('.typing').style.animation = 'typing-sequence 2s steps(17) forwards';
+    setTimeout(() => { document.querySelector('.typing-delayed').style.animation = 'typing-sequence 2s steps(28) forwards'; document.querySelector('.typing-delayed').style.opacity = '1'; }, 2400);
+    setTimeout(() => { document.querySelector('.typing-interactive-prompt').style.opacity = '1'; }, 4600);
+
+    terminalInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const command = terminalInput.value.toLowerCase().trim();
+            terminalInput.value = '';
+            
+            if (command === 'clear') {
+                terminalOutput.innerText = '';
+            } 
+            else if (command === 'whoami') {
+                terminalOutput.innerText = '> SYSTEM USER: SAMI HAMEG. ROLE: CYBERSECURITY STUDENT.';
+            } 
+            else if (command === 'sudo su' || command === 'alert') {
+                document.body.classList.toggle('red-alert');
+                const isRed = document.body.classList.contains('red-alert');
+                
+                if (isRed) {
+                    terminalOutput.innerHTML = '<span style="color:#ff003c; font-weight:bold;">> CRITICAL WARNING: ROOT ACCESS BREACH DETECTED.</span>';
+                    document.querySelector('.status-online').style.color = '#ff003c';
+                    document.querySelector('.status-online').innerText = 'COMPROMISED';
+                } else {
+                    terminalOutput.innerText = '> SYSTEM RESTORED TO SECURE STATE.';
+                    document.querySelector('.status-online').style.color = '#00ff00';
+                    document.querySelector('.status-online').innerText = 'PROTECTED';
+                }
+                
+                if(window.pJSDom && window.pJSDom.length > 0) {
+                    const pjs = window.pJSDom[0].pJS;
+                    const color = isRed ? '#ff003c' : '#00f2ff';
+                    pjs.particles.color.value = color;
+                    pjs.particles.line_linked.color = color;
+                    pjs.fn.particlesRefresh();
+                }
+            } 
+            else if (command === 'matrix') {
+                document.body.classList.toggle('matrix-mode');
+                if (document.body.classList.contains('matrix-mode')) {
+                    document.getElementById('particles-js').style.display = 'none';
+                    canvas.style.display = 'block';
+                    if(!matrixInterval) matrixInterval = setInterval(drawMatrix, 33);
+                    terminalOutput.innerText = '> WAKE UP, NEO. MATRIX PROTOCOL INITIATED.';
+                } else {
+                    document.getElementById('particles-js').style.display = 'block';
+                    canvas.style.display = 'none';
+                    clearInterval(matrixInterval);
+                    matrixInterval = null;
+                    terminalOutput.innerText = '> MATRIX PROTOCOL DEACTIVATED.';
+                }
+            }
+            else if (command === '') {
+                terminalOutput.innerText = '';
+            } else {
+                terminalOutput.innerText = `> COMMAND NOT FOUND: ${command}. Try 'matrix', 'sudo su', 'whoami', 'clear'.`;
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
