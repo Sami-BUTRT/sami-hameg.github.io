@@ -164,29 +164,58 @@
     </section>
 
     <section id="projects" class="section reveal-element">
-        <h2 class="section-title decrypt-target" data-text="04. PROJETS_ET_LABORATOIRES">04. PROJETS_ET_LABORATOIRES</h2>
-        <article class="card">
-            <h3>Audit de Sécurité Offensif (Pentesting Lab)</h3>
-            
-            <p><strong>Offensive Security Audit Technique</strong></p>
-            <p>Déploiement d'un laboratoire isolé pour simuler des attaques réelles et analyser les vecteurs de compromission.</p>
-            
-            <ul style="list-style-type: none; padding-left: 0; margin-top: 10px;">
-                <li><span style="color: #00ff00;">[+]</span> Projet de fin de semestre réalisé <strong>seul</strong> (Note obtenue : <strong>> 14/20</strong>).</li>
-                <li><span style="color: #00ff00;">[+]</span> Scan de vulnérabilités critiques via <strong>Nessus</strong>.</li>
-                <li><span style="color: #00ff00;">[+]</span> Exploitation de failles : 
-                    <span class="vuln-tag hud-tooltip" data-tooltip="Score CVSS : 10.0 (Critique)">CVE-2010-2075</span> 
-                    et 
-                    <span class="vuln-tag hud-tooltip" data-tooltip="Score CVSS : 10.0 (Critique)">MS08-067</span>.
-                </li>
-                <li><span style="color: #00ff00;">[+]</span> Rédaction d'un <strong>rapport</strong> avec préconisations de <strong>remédiation</strong>.</li>
-            </ul>
+    <h2 class="section-title decrypt-target" data-text="04. PROJETS_ET_LABORATOIRES">04. PROJETS_ET_LABORATOIRES</h2>
+    
+    <article class="card" style="margin-bottom: 30px;">
+        <h3>Audit de Sécurité Offensif (Pentesting Lab)</h3>
+        
+        <p><strong>Offensive Security Audit Technique</strong></p>
+        <p>Déploiement d'un laboratoire isolé pour simuler des attaques réelles et analyser les vecteurs de compromission.</p>
+        
+        <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Arsenal utilisé :</p>
+        <div class="tags" style="margin-bottom: 15px;">
+            <span class="tag">Kali Linux</span><span class="tag">Nessus</span><span class="tag">Metasploitable</span><span class="tag">VirtualBox</span><span class="tag">Wireshark</span>
+        </div>
 
-            <div class="project-actions" style="margin-top: 20px;">
-                <a href="https://github.com/Sami-BUTRT/Test-d-Intrusion-Complet" class="btn" target="_blank">LIRE_LE_RAPPORT(Github)</a>
-            </div>
-        </article>
-    </section>
+        <ul style="list-style-type: none; padding-left: 0; margin-top: 10px;">
+            <li><span style="color: #00ff00;">[+]</span> Projet de fin de semestre réalisé <strong>seul</strong> (Note obtenue : <strong>> 14/20</strong>).</li>
+            <li><span style="color: #00ff00;">[+]</span> Scan de vulnérabilités critiques via <strong>Nessus</strong>.</li>
+            <li><span style="color: #00ff00;">[+]</span> Exploitation de failles : 
+                <span class="vuln-tag hud-tooltip" data-tooltip="Score CVSS : 10.0 (Critique)">CVE-2010-2075</span> 
+                et 
+                <span class="vuln-tag hud-tooltip" data-tooltip="Score CVSS : 10.0 (Critique)">MS08-067</span>.
+            </li>
+            <li><span style="color: #00ff00;">[+]</span> Rédaction d'un <strong>rapport</strong> avec préconisations de <strong>remédiation</strong>.</li>
+        </ul>
+
+        <div class="project-actions" style="margin-top: 20px;">
+            <a href="https://github.com/Sami-BUTRT/Test-d-Intrusion-Complet" class="btn" target="_blank">LIRE_LE_RAPPORT(Github)</a>
+        </div>
+    </article>
+
+    <article class="card">
+        <h3>Supervision de la Sécurité LAN (Zabbix)</h3>
+        
+        <p><strong>Infrastructure Monitoring & Threat Detection</strong></p>
+        <p>Mise en place d'une solution de supervision proactive pour détecter les anomalies et les comportements suspects sur un réseau distant[cite: 13, 21].</p>
+        
+        <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Arsenal utilisé :</p>
+        <div class="tags" style="margin-bottom: 15px;">
+            <span class="tag">Zabbix 7.0</span><span class="tag">DigitalOcean (Cloud)</span><span class="tag">Ubuntu Server</span><span class="tag">Stress-ng</span><span class="tag">SSH Keys</span>
+        </div>
+
+        <ul style="list-style-type: none; padding-left: 0; margin-top: 10px;">
+            <li><span style="color: #00ff00;">[+]</span> Déploiement d'une architecture en étoile sur <strong>DigitalOcean</strong> (Serveur vs Clients distants).</li>
+            <li><span style="color: #00ff00;">[+]</span> Configuration d'<strong>agents Zabbix</strong> pour la collecte de métriques en temps réel[cite: 139, 140].</li>
+            <li><span style="color: #00ff00;">[+]</span> Création de <strong>Triggers</strong> personnalisés pour la détection d'attaques par déni de service (DoS)[cite: 170, 178].</li>
+            <li><span style="color: #00ff00;">[+]</span> Simulation d'attaque via <strong>stress</strong> et validation du cycle d'alerte (Problem -> Resolved)[cite: 184, 185].</li>
+        </ul>
+
+        <div class="project-actions" style="margin-top: 20px;">
+            <a href="https://github.com/Sami-BUTRT/zabbix-security-monitoring" class="btn" target="_blank">LIRE_LE_RAPPORT(Github) - en cours d'ajout</a>
+        </div>
+    </article>
+</section>
 
     <section id="certifications" class="section reveal-element">
         <h2 class="section-title decrypt-target" data-text="05. CERTIFICATIONS_VALIDEES">05. CERTIFICATIONS_VALIDEES</h2>
