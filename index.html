@@ -60,7 +60,7 @@
         <h2 class="section-title decrypt-target" data-text="01. PROFIL_UTILISATEUR">01. PROFIL_UTILISATEUR</h2>
         <div class="card about-grid">
             <div class="profile-frame">
-                <div class="profile-initial">SH</div>
+                <img src="PHOTO_CV.png" alt="Sami Hameg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
             </div>
             <div class="about-text">
                 <p>Actuellement en 2ème année de <strong>BUT R&T</strong>, je me spécialise dans la sécurisation des infrastructures et l'analyse de vulnérabilités.</p>
@@ -193,7 +193,7 @@
         </div>
     </article>
 
-    <article class="card">
+    <article class="card" style="margin-bottom: 30px;">
         <h3>Supervision de la Sécurité LAN (Zabbix)</h3>
         
         <p><strong>Infrastructure Monitoring & Threat Detection</strong></p>
@@ -213,6 +213,29 @@
 
         <div class="project-actions" style="margin-top: 20px;">
             <a href="https://github.com/Sami-BUTRT/zabbix-security-monitoring" class="btn" target="_blank">LIRE_LE_RAPPORT(Github) - en cours d'ajout</a>
+        </div>
+    </article>
+
+    <article class="card">
+        <h3>Mise en place d'un SOC Cloud (Sentinel)</h3>
+        
+        <p><strong>Infrastructure Cloud Security & SIEM Operations</strong></p>
+        <p>Déploiement d'une solution de gestion des événements et des informations de sécurité (SIEM) pour surveiller une infrastructure Linux hybride.</p>
+        
+        <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Arsenal utilisé :</p>
+        <div class="tags" style="margin-bottom: 15px;">
+            <span class="tag">Microsoft Sentinel</span><span class="tag">Azure AMA</span><span class="tag">KQL</span><span class="tag">Defender for Cloud</span><span class="tag">Linux</span>
+        </div>
+
+        <ul style="list-style-type: none; padding-left: 0; margin-top: 10px;">
+            <li><span style="color: #00ff00;">[+]</span> <strong>Collecte :</strong> Ingestion des flux <strong>Syslog</strong> en temps réel via l'agent Azure Monitor (AMA).</li>
+            <li><span style="color: #00ff00;">[+]</span> <strong>Détection :</strong> Développement de règles d'analyse en <strong>KQL</strong> pour identifier les attaques par force brute.</li>
+            <li><span style="color: #00ff00;">[+]</span> <strong>Réponse :</strong> Investigation et corrélation des alertes via le portail unifié <strong>Microsoft Defender</strong>.</li>
+            <li><span style="color: #00ff00;">[+]</span> <strong>Durcissement :</strong> Sécurisation périmétrique par filtrage IP et <strong>Network Security Groups (NSG)</strong>.</li>
+        </ul>
+
+        <div class="project-actions" style="margin-top: 20px;">
+            <span class="btn" style="opacity: 0.6; cursor: not-allowed;">DOCUMENTATION_EN_COURS</span>
         </div>
     </article>
 </section>
