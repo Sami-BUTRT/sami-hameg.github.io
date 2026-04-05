@@ -5,13 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sami Hameg | Portfolio Cybersécurité</title>
 
-    <link rel="icon" type="image/jpeg" href="logo_sami.jpeg">
-    
+    <!-- SEO / Metadata -->
+    <meta name="description" content="Portfolio de Sami Hameg, étudiant en BUT R&T spécialisé Cybersécurité à l'Université Sorbonne Paris Nord. Compétences en réseaux, sécurité offensive et défensive, SIEM.">
+    <meta name="author" content="Sami Hameg">
+    <link rel="canonical" href="https://samihameg.page/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://samihameg.page/">
+    <meta property="og:title" content="Sami Hameg | Portfolio Cybersécurité">
+    <meta property="og:description" content="Portfolio de Sami Hameg, étudiant en BUT R&T spécialisé Cybersécurité. Réseaux, sécurité offensive et défensive, SIEM.">
+    <meta property="og:image" content="https://samihameg.page/PHOTO_CV.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sami Hameg | Portfolio Cybersécurité">
+    <meta name="twitter:description" content="Portfolio de Sami Hameg, étudiant en BUT R&T spécialisé Cybersécurité.">
+    <meta name="twitter:image" content="https://samihameg.page/PHOTO_CV.png">
+
+    <link rel="icon" type="image/jpeg" href="logo_sami.jpg">
+
+    <!-- Performance: preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Share+Tech+Mono&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="style.css">
 
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.credly.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.credly.com; img-src 'self' data: https://cdn.credly.com https://images.credly.com;">
+    <!-- Security: CSP without unsafe-inline for scripts -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.credly.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.credly.com; img-src 'self' data: https://cdn.credly.com https://images.credly.com;">
 </head>
 <body>
 
@@ -24,7 +46,7 @@
 
 <div class="scanlines"></div>
 
-<nav class="navbar">
+<nav class="navbar" aria-label="Navigation principale">
     <div class="navbar-container">
         <div class="navbar-logo">SAMI_HAMEG<span class="blink">_</span></div>
         <ul class="navbar-menu" id="navbar-menu">
@@ -48,27 +70,28 @@
         <p class="typing-delayed">Role: BUT R&T - Cybersécurité</p>
         <p class="typing-interactive-prompt">
             <span class="terminal-prompt-user">ROOT@SAMI-HAMEG:~$ </span>
-            <input type="text" id="terminal-input" placeholder="Try 'matrix' or 'sudo su'..." autocomplete="off">
+            <label for="terminal-input" class="visually-hidden">Terminal de commande</label>
+            <input type="text" id="terminal-input" placeholder="Try 'matrix' or 'sudo su'..." autocomplete="off" aria-label="Terminal de commande" aria-describedby="terminal-output" spellcheck="false">
         </p>
-        <p id="terminal-output"></p>
+        <p id="terminal-output" aria-live="polite"></p>
     </div>
 </header>
 
-<div class="container">
+<main class="container">
     
     <section id="about" class="section reveal-element">
         <h2 class="section-title decrypt-target" data-text="01. PROFIL_UTILISATEUR">01. PROFIL_UTILISATEUR</h2>
         <div class="card about-grid">
             <div class="profile-frame">
-                <img src="PHOTO_CV.png" alt="Sami Hameg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+                <img src="PHOTO_CV.png" alt="Sami Hameg">
             </div>
             <div class="about-text">
                 <p>Actuellement en 2ème année de <strong>BUT R&T</strong>, je me spécialise dans la sécurisation des infrastructures et l'analyse de vulnérabilités.</p>
                 
-                <div class="highlight-box" style="border-left: 4px solid var(--primary-color); background: rgba(0, 242, 255, 0.05); margin: 15px 0; padding: 15px;">
-                    <strong style="color: var(--primary-color); font-family: 'JetBrains Mono', monospace;">> REQUÊTE_EN_COURS : DISPONIBILITÉS</strong><br><br>
-                    <span style="color: #00ff00;">[+]</span> <strong style="color: var(--text-main);">STAGE (11 semaines) :</strong> À partir du 17 Avril 2026.<br>
-                    <span style="color: #00ff00;">[+]</span> <strong style="color: var(--text-main);">ALTERNANCE :</strong> À partir de Septembre 2026 (Rythme : 14 / 14 jours).
+                <div class="highlight-box">
+                    <strong class="hl-title">> REQUÊTE_EN_COURS : DISPONIBILITÉS</strong><br><br>
+                    <span class="text-success">[+]</span> <strong>STAGE (11 semaines) :</strong> À partir du 17 Avril 2026.<br>
+                    <span class="text-success">[+]</span> <strong>ALTERNANCE :</strong> À partir de Septembre 2026 (Rythme : 14 / 14 jours).
                 </div>
                 
                 <div class="highlight-box">
@@ -76,7 +99,7 @@
                 </div>
 
                 <div class="biometric-container">
-                    <div id="biometric-btn" class="biometric-box">
+                    <div id="biometric-btn" class="biometric-box" role="button" tabindex="0" aria-label="Scanner biométrique — maintenez appuyé pour télécharger le CV">
                         <svg class="fingerprint-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10"></path>
                             <path d="M5 15a7.5 7.5 0 0 1 14 0"></path>
@@ -100,27 +123,27 @@
             <p>Spécialisation Cybersécurité | 2ème année (2024-2027)</p>
             <p>> Université Sorbonne Paris Nord - Villetaneuse</p>
             
-            <ul style="list-style-type: none; padding-left: 0; margin-top: 15px;">
-                <li style="margin-bottom: 8px;"><span style="color: #00ff00;">[+]</span> <strong>1ère année :</strong> validée (moyennes des semestres 1 et 2 > 10)</li>
-                <li style="margin-bottom: 8px;"><span style="color: #00ff00;">[+]</span> <strong>2e année :</strong> en cours (moyenne du semestre 3 > 10)</li>
-                <li><span style="color: #00ff00;">[+]</span> <strong>3e année :</strong> à venir dans la formation</li>
+            <ul class="list-none" style="margin-top: 15px;">
+                <li><span class="text-success">[+]</span> <strong>1ère année :</strong> validée (moyennes des semestres 1 et 2 > 10)</li>
+                <li><span class="text-success">[+]</span> <strong>2e année :</strong> en cours (moyenne du semestre 3 > 10)</li>
+                <li><span class="text-success">[+]</span> <strong>3e année :</strong> à venir dans la formation</li>
             </ul>
         </div>
     </section>
 
     <section id="skills" class="section reveal-element">
         <h2 class="section-title decrypt-target" data-text="03. ARSENAL_TECHNIQUE">03. ARSENAL_TECHNIQUE</h2>
-       <div class="skill-category card">
+   <div class="skill-category card">
     <h3>ADMINISTRER LES RÉSEAUX</h3>
-    <p style="color: var(--primary-color); font-size: 0.85rem; margin-bottom: 5px;">> Protocoles/Routages :</p>
+    <p class="skill-label">> Protocoles/Routages :</p>
     <div class="tags">
         <span class="tag">EIGRP</span><span class="tag">HSRP</span><span class="tag">ACL</span><span class="tag">IPv4/IPv6</span><span class="tag">MPLS</span>
     </div>
-    <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Services :</p>
+    <p class="skill-label">> Services :</p>
     <div class="tags">
         <span class="tag">DNS</span><span class="tag">DHCP</span><span class="tag">HTTP</span><span class="tag">SSH</span>
     </div>
-    <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Virtualisation et Analyse :</p>
+    <p class="skill-label">> Virtualisation et Analyse :</p>
     <div class="tags">
         <span class="tag">Wireshark</span><span class="tag">GNS3</span><span class="tag">Packet Tracer</span><span class="tag">VirtualBox</span><span class="tag">Linux</span>
     </div>
@@ -128,15 +151,15 @@
 
 <div class="skill-category card">
     <h3>ADMINISTRER UN SI SÉCURISÉ</h3>
-    <p style="color: var(--primary-color); font-size: 0.85rem; margin-bottom: 5px;">> Microsoft & Cloud :</p>
+    <p class="skill-label">> Microsoft & Cloud :</p>
     <div class="tags">
         <span class="tag">Windows Server 2025</span><span class="tag">Active Directory</span><span class="tag">Azure Portal</span>
     </div>
-    <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Sécurité Accès & Hardening :</p>
+    <p class="skill-label">> Sécurité Accès & Hardening :</p>
     <div class="tags">
         <span class="tag">Firewalling (NSG)</span><span class="tag">VPN</span><span class="tag">GPO</span><span class="tag">Filtrage IP/CIDR</span>
     </div>
-    <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Automatisation :</p>
+    <p class="skill-label">> Automatisation :</p>
     <div class="tags">
         <span class="tag">PowerShell</span><span class="tag">Bash</span>
     </div>
@@ -144,72 +167,71 @@
 
 <div class="skill-category card">
     <h3>SURVEILLER UN SI SÉCURISÉ</h3>
-    <p style="color: var(--primary-color); font-size: 0.85rem; margin-bottom: 5px;">> Supervision & SIEM :</p>
+    <p class="skill-label">> Supervision & SIEM :</p>
     <div class="tags">
         <span class="tag">Microsoft Sentinel</span><span class="tag">Zabbix 7.0</span><span class="tag">Azure Monitor (AMA)</span>
     </div>
-    <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Analyse & Détection :</p>
+    <p class="skill-label">> Analyse & Détection :</p>
     <div class="tags">
         <span class="tag">Langage KQL</span><span class="tag">Analyse de logs Syslog</span><span class="tag">Triggers & Alerting</span>
     </div>
-    <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Audit & Offensive :</p>
+    <p class="skill-label">> Audit & Offensive :</p>
     <div class="tags">
         <span class="tag">Nessus</span><span class="tag">Kali Linux</span><span class="tag">Metasploitable</span><span class="tag">Recherche d'IoC</span>
     </div>
 </div>
-        </div>
     </section>
 
     <section id="projects" class="section reveal-element">
     <h2 class="section-title decrypt-target" data-text="04. PROJETS_ET_LABORATOIRES">04. PROJETS_ET_LABORATOIRES</h2>
     
-    <article class="card" style="margin-bottom: 30px;">
+    <article class="card card-mb">
         <h3>Audit de Sécurité Offensif (Pentesting Lab)</h3>
         
         <p><strong>Offensive Security Audit Technique</strong></p>
         <p>Déploiement d'un laboratoire isolé pour simuler des attaques réelles et analyser les vecteurs de compromission.</p>
         
-        <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Arsenal utilisé :</p>
-        <div class="tags" style="margin-bottom: 15px;">
+        <p class="skill-label">> Arsenal utilisé :</p>
+        <div class="tags tags-mb">
             <span class="tag">Kali Linux</span><span class="tag">Nessus</span><span class="tag">Metasploitable</span><span class="tag">VirtualBox</span><span class="tag">Wireshark</span>
         </div>
 
-        <ul style="list-style-type: none; padding-left: 0; margin-top: 10px;">
-            <li><span style="color: #00ff00;">[+]</span> Projet de fin de semestre réalisé <strong>seul</strong> (Note obtenue : <strong>> 14/20</strong>).</li>
-            <li><span style="color: #00ff00;">[+]</span> Scan de vulnérabilités critiques via <strong>Nessus</strong>.</li>
-            <li><span style="color: #00ff00;">[+]</span> Exploitation de failles : 
+        <ul class="list-none" style="margin-top: 10px;">
+            <li><span class="text-success">[+]</span> Projet de fin de semestre réalisé <strong>seul</strong> (Note obtenue : <strong>> 14/20</strong>).</li>
+            <li><span class="text-success">[+]</span> Scan de vulnérabilités critiques via <strong>Nessus</strong>.</li>
+            <li><span class="text-success">[+]</span> Exploitation de failles : 
                 <span class="vuln-tag hud-tooltip" data-tooltip="Score CVSS : 10.0 (Critique)">CVE-2010-2075</span> 
                 et 
                 <span class="vuln-tag hud-tooltip" data-tooltip="Score CVSS : 10.0 (Critique)">MS08-067</span>.
             </li>
-            <li><span style="color: #00ff00;">[+]</span> Rédaction d'un <strong>rapport</strong> avec préconisations de <strong>remédiation</strong>.</li>
+            <li><span class="text-success">[+]</span> Rédaction d'un <strong>rapport</strong> avec préconisations de <strong>remédiation</strong>.</li>
         </ul>
 
-        <div class="project-actions" style="margin-top: 20px;">
-            <a href="https://github.com/Sami-BUTRT/Test-d-Intrusion-Complet" class="btn" target="_blank">LIRE_LE_RAPPORT(Github)</a>
+        <div class="project-actions">
+            <a href="https://github.com/Sami-BUTRT/Test-d-Intrusion-Complet" class="btn" target="_blank" rel="noopener noreferrer">LIRE_LE_RAPPORT(Github)</a>
         </div>
     </article>
 
-    <article class="card" style="margin-bottom: 30px;">
+    <article class="card card-mb">
         <h3>Supervision de la Sécurité LAN (Zabbix)</h3>
         
         <p><strong>Infrastructure Monitoring & Threat Detection</strong></p>
         <p>Mise en place d'une solution de supervision proactive pour détecter les anomalies et les comportements suspects sur un réseau distant.</p>
         
-        <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Arsenal utilisé :</p>
-        <div class="tags" style="margin-bottom: 15px;">
+        <p class="skill-label">> Arsenal utilisé :</p>
+        <div class="tags tags-mb">
             <span class="tag">Zabbix 7.0</span><span class="tag">DigitalOcean (Cloud)</span><span class="tag">Ubuntu Server</span><span class="tag">Stress-ng</span><span class="tag">SSH Keys</span>
         </div>
 
-        <ul style="list-style-type: none; padding-left: 0; margin-top: 10px;">
-            <li><span style="color: #00ff00;">[+]</span> Déploiement d'une architecture en étoile sur <strong>DigitalOcean</strong> (Serveur vs Clients distants).</li>
-            <li><span style="color: #00ff00;">[+]</span> Configuration d'<strong>agents Zabbix</strong> pour la collecte de métriques en temps réel.</li>
-            <li><span style="color: #00ff00;">[+]</span> Création de <strong>Triggers</strong> personnalisés pour la détection d'attaques par déni de service (DoS).</li>
-            <li><span style="color: #00ff00;">[+]</span> Simulation d'attaque via <strong>stress</strong> et validation du cycle d'alerte (Problem -> Resolved).</li>
+        <ul class="list-none" style="margin-top: 10px;">
+            <li><span class="text-success">[+]</span> Déploiement d'une architecture en étoile sur <strong>DigitalOcean</strong> (Serveur vs Clients distants).</li>
+            <li><span class="text-success">[+]</span> Configuration d'<strong>agents Zabbix</strong> pour la collecte de métriques en temps réel.</li>
+            <li><span class="text-success">[+]</span> Création de <strong>Triggers</strong> personnalisés pour la détection d'attaques par déni de service (DoS).</li>
+            <li><span class="text-success">[+]</span> Simulation d'attaque via <strong>stress</strong> et validation du cycle d'alerte (Problem -> Resolved).</li>
         </ul>
 
-        <div class="project-actions" style="margin-top: 20px;">
-            <a href="https://github.com/Sami-BUTRT/zabbix-security-monitoring" class="btn" target="_blank">LIRE_LE_RAPPORT(Github) - en cours d'ajout</a>
+        <div class="project-actions">
+            <a href="https://github.com/Sami-BUTRT/zabbix-security-monitoring" class="btn" target="_blank" rel="noopener noreferrer">LIRE_LE_RAPPORT(Github) - en cours d'ajout</a>
         </div>
     </article>
 
@@ -219,20 +241,20 @@
         <p><strong>Infrastructure Cloud Security & SIEM Operations</strong></p>
         <p>Déploiement d'une solution de gestion des événements et des informations de sécurité (SIEM) pour surveiller une infrastructure Linux hybride.</p>
         
-        <p style="color: var(--primary-color); font-size: 0.85rem; margin: 10px 0 5px;">> Arsenal utilisé :</p>
-        <div class="tags" style="margin-bottom: 15px;">
+        <p class="skill-label">> Arsenal utilisé :</p>
+        <div class="tags tags-mb">
             <span class="tag">Microsoft Sentinel</span><span class="tag">Azure AMA</span><span class="tag">KQL</span><span class="tag">Defender for Cloud</span><span class="tag">Linux</span>
         </div>
 
-        <ul style="list-style-type: none; padding-left: 0; margin-top: 10px;">
-            <li><span style="color: #00ff00;">[+]</span> <strong>Collecte :</strong> Ingestion des flux <strong>Syslog</strong> en temps réel via l'agent Azure Monitor (AMA).</li>
-            <li><span style="color: #00ff00;">[+]</span> <strong>Détection :</strong> Développement de règles d'analyse en <strong>KQL</strong> pour identifier les attaques par force brute.</li>
-            <li><span style="color: #00ff00;">[+]</span> <strong>Réponse :</strong> Investigation et corrélation des alertes via le portail unifié <strong>Microsoft Defender</strong>.</li>
-            <li><span style="color: #00ff00;">[+]</span> <strong>Durcissement :</strong> Sécurisation périmétrique par filtrage IP et <strong>Network Security Groups (NSG)</strong>.</li>
+        <ul class="list-none" style="margin-top: 10px;">
+            <li><span class="text-success">[+]</span> <strong>Collecte :</strong> Ingestion des flux <strong>Syslog</strong> en temps réel via l'agent Azure Monitor (AMA).</li>
+            <li><span class="text-success">[+]</span> <strong>Détection :</strong> Développement de règles d'analyse en <strong>KQL</strong> pour identifier les attaques par force brute.</li>
+            <li><span class="text-success">[+]</span> <strong>Réponse :</strong> Investigation et corrélation des alertes via le portail unifié <strong>Microsoft Defender</strong>.</li>
+            <li><span class="text-success">[+]</span> <strong>Durcissement :</strong> Sécurisation périmétrique par filtrage IP et <strong>Network Security Groups (NSG)</strong>.</li>
         </ul>
 
-        <div class="project-actions" style="margin-top: 20px;">
-            <span class="btn" style="opacity: 0.6; cursor: not-allowed;">DOCUMENTATION_EN_COURS</span>
+        <div class="project-actions">
+            <span class="btn btn-disabled">DOCUMENTATION_EN_COURS</span>
         </div>
     </article>
 </section>
@@ -242,17 +264,17 @@
         <div class="card cert-container">
             <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="b4cc6608-54d9-45ac-8dcf-fdfdc5932d18" data-share-badge-host="https://www.credly.com"></div>
             <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="a406664f-82cf-4f4e-a810-ab75c853c1df" data-share-badge-host="https://www.credly.com"></div>
-            <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+            <script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
         </div>
     </section>
 
     <section id="contact" class="section reveal-element">
         <h2 class="section-title decrypt-target" data-text="06. PRENDRE_CONTACT">06. PRENDRE_CONTACT</h2>
-        <div class="card contact-grid" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="card contact-grid">
             <div>
                 <p>LOCALISATION: Marly-la-Ville 95670, FR</p>
-                <p>EMAIL: <a href="#" id="email-extract">contact@samihameg.page</a></p>
-                <p>LINKEDIN: <a href="https://www.linkedin.com/in/sami-hameg" target="_blank">/in/sami-hameg</a></p>
+                <p>EMAIL: <a href="#" id="email-extract" aria-label="Copier l'adresse e-mail contact@samihameg.page">contact@samihameg.page</a></p>
+                <p>LINKEDIN: <a href="https://www.linkedin.com/in/sami-hameg" target="_blank" rel="noopener noreferrer">/in/sami-hameg</a></p>
             </div>
             <div class="radar"></div>
         </div>
@@ -261,260 +283,34 @@
     <section id="hobbies" class="section reveal-element">
         <h2 class="section-title decrypt-target" data-text="07. CENTRES_D_INTERETS">07. CENTRES_D_INTERETS</h2>
         <div class="card">
-            <ul style="list-style-type: none; padding-left: 0; margin: 0;">
-                <li style="margin-bottom: 10px;"><span style="color: #00ff00;">[+]</span> Participation régulière sur plateforme CTF <strong>Root-Me</strong></li>
-                <li style="margin-bottom: 10px;"><span style="color: #00ff00;">[+]</span> Adhérent de l'association <strong>CyberV</strong></li>
-                <li><span style="color: #00ff00;">[+]</span> <strong>Jeux de stratégies</strong></li>
+            <ul class="list-none" style="margin: 0;">
+                <li><span class="text-success">[+]</span> Participation régulière sur plateforme CTF <strong>Root-Me</strong></li>
+                <li><span class="text-success">[+]</span> Adhérent de l'association <strong>CyberV</strong></li>
+                <li><span class="text-success">[+]</span> <strong>Jeux de stratégies</strong></li>
             </ul>
         </div>
     </section>
 
     <section id="rgpd" class="section reveal-element">
         <h2 class="section-title decrypt-target" data-text="08. CONFORMITE_RGPD">08. CONFORMITE_RGPD</h2>
-        <div class="card" style="border-left: 4px solid var(--accent-color); background: rgba(255, 0, 85, 0.05);">
-            <p style="font-family: 'JetBrains Mono', monospace; color: var(--accent-color); margin-bottom: 10px;"><strong>>_ AVIS_DE_CONFIDENTIALITÉ</strong></p>
+        <div class="card rgpd-card">
+            <p class="rgpd-heading"><strong>>_ AVIS_DE_CONFIDENTIALITÉ</strong></p>
             <p>Ce portfolio est conçu dans le plus strict respect de la vie privée.</p>
-            <ul style="list-style-type: none; padding-left: 0; margin-top: 10px;">
-                <li><span style="color: #00ff00;">[+]</span> <strong>Aucune collecte :</strong> Je ne récolte, ne stocke ni ne partage aucune de vos données personnelles.</li>
-                <li><span style="color: #00ff00;">[+]</span> <strong>Zéro tracking :</strong> Ce site n'utilise aucun cookie de pistage publicitaire ou d'analyse intrusif.</li>
-                <li><span style="color: #00ff00;">[+]</span> Votre navigation reste strictement locale et confidentielle.</li>
+            <ul class="list-none" style="margin-top: 10px;">
+                <li><span class="text-success">[+]</span> <strong>Aucune collecte :</strong> Je ne récolte, ne stocke ni ne partage aucune de vos données personnelles.</li>
+                <li><span class="text-success">[+]</span> <strong>Zéro tracking :</strong> Ce site n'utilise aucun cookie de pistage publicitaire ou d'analyse intrusif.</li>
+                <li><span class="text-success">[+]</span> Votre navigation reste strictement locale et confidentielle.</li>
             </ul>
         </div>
     </section>
-</div>
+</main>
 
 <footer>
     <p>ROOT@SAMI-HAMEG:~$ EXIT | © 2026</p>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
-<script>
-    /* 1. INITIALISATION DES PARTICULES */
-    particlesJS('particles-js', {
-        particles: {
-            number: { value: 60, density: { enable: true, value_area: 800 } },
-            color: { value: '#00f2ff' },
-            shape: { type: 'circle' },
-            opacity: { value: 0.3, random: true },
-            size: { value: 3, random: true },
-            line_linked: { enable: true, distance: 150, color: '#00f2ff', opacity: 0.2, width: 1 },
-            move: { enable: true, speed: 1.5, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
-        },
-        interactivity: {
-            detect_on: 'canvas',
-            events: { onhover: { enable: true, mode: 'grab' } },
-            modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } } }
-        },
-        retina_detect: true
-    });
-
-    /* 2. MODE MATRIX (DIGITAL RAIN) */
-    const canvas = document.getElementById('matrix-canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*'.split('');
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = [];
-    for(let i=0; i<columns; i++) drops[i] = 1;
-    
-    let matrixInterval;
-    function drawMatrix() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        const isRed = document.body.classList.contains('red-alert');
-        ctx.fillStyle = isRed ? '#ff003c' : '#00ff41';
-        
-        ctx.font = fontSize + 'px monospace';
-        for(let i=0; i<drops.length; i++) {
-            const text = chars[Math.floor(Math.random() * chars.length)];
-            ctx.fillText(text, i*fontSize, drops[i]*fontSize);
-            if(drops[i]*fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-            drops[i]++;
-        }
-    }
-
-    /* 3. EFFETS DE SCROLL ET HUD */
-    const revealElements = document.querySelectorAll('.reveal-element');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('revealed'); });
-    }, { threshold: 0.1 });
-    revealElements.forEach(el => observer.observe(el));
-
-    const hudBox = document.getElementById('hud-box');
-    document.querySelectorAll('.hud-tooltip').forEach(el => {
-        el.addEventListener('mouseenter', () => { hudBox.innerText = el.getAttribute('data-tooltip'); hudBox.style.opacity = '1'; });
-        el.addEventListener('mousemove', (e) => { hudBox.style.left = (e.clientX + 15) + 'px'; hudBox.style.top = (e.clientY + 15) + 'px'; });
-        el.addEventListener('mouseleave', () => { hudBox.style.opacity = '0'; });
-    });
-
-    /* 4. DÉCRYPTAGE AU SURVOL */
-    const decryptTargets = document.querySelectorAll('.decrypt-target');
-    const decryptChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
-    decryptTargets.forEach(target => {
-        const originalText = target.dataset.text;
-        target.addEventListener('mouseover', () => {
-            let iteration = 0;
-            const interval = setInterval(() => {
-                target.innerText = originalText.split('').map((char, index) => {
-                    if (index < iteration) return originalText[index];
-                    return decryptChars[Math.floor(Math.random() * decryptChars.length)];
-                }).join('');
-                if (iteration >= originalText.length) clearInterval(interval);
-                iteration += 1 / 3;
-            }, 30);
-        });
-        target.addEventListener('mouseout', () => target.innerText = originalText);
-    });
-
-    /* 5. EXTRACTION DE DONNÉES (PRESSE-PAPIERS) */
-    const emailLink = document.getElementById('email-extract');
-    emailLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        navigator.clipboard.writeText('contact@samihameg.page');
-        const original = emailLink.innerText;
-        emailLink.innerText = '[ DATA EXTRACTED SUCCESSFULLY ]';
-        emailLink.classList.add('extracted');
-        
-        setTimeout(() => {
-            emailLink.innerText = original;
-            emailLink.classList.remove('extracted');
-        }, 2500);
-    });
-
-    /* 6. SCANNER BIOMÉTRIQUE (CV) - CORRIGÉ */
-    const bioBtn = document.getElementById('biometric-btn');
-    const bioText = document.getElementById('biometric-text');
-    let scanTimer;
-    let scanSuccess = false;
-
-    bioBtn.addEventListener('mousedown', startScan);
-    bioBtn.addEventListener('touchstart', startScan);
-    window.addEventListener('mouseup', stopScan);
-    window.addEventListener('touchend', stopScan);
-
-    function downloadPDF(path, downloadName) {
-        const a = document.createElement('a');
-        a.href = path;          
-        a.download = downloadName;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-    }
-
-    function startScan(e) {
-        if(scanSuccess) return;
-        
-        bioBtn.classList.add('scanning');
-        bioText.innerText = "VERIFYING IDENTITY...";
-        bioText.style.color = "var(--primary-color)";
-        
-        scanTimer = setTimeout(() => {
-            scanSuccess = true;
-            bioBtn.classList.remove('scanning');
-            bioBtn.classList.add('granted');
-            bioText.innerText = "[ ACCESS GRANTED ] - DOWNLOADING...";
-            bioText.style.color = "#00ff00";
-            
-            setTimeout(() => {
-                downloadPDF('CV_STAGE_HAMEG_Sami.pdf', 'CV_STAGE_HAMEG_Sami.pdf');
-                setTimeout(() => {
-                    downloadPDF('CV_ALTERNANCE_HAMEG_Sami.pdf', 'CV_ALTERNANCE_HAMEG_Sami.pdf');
-                }, 300);
-                
-                setTimeout(() => {
-                    scanSuccess = false;
-                    bioBtn.classList.remove('granted');
-                    bioText.innerText = "HOLD_TO_DECRYPT_CV.pdf";
-                    bioText.style.color = "var(--primary-color)";
-                }, 3000);
-            }, 800);
-            
-        }, 1500);
-    }
-
-    function stopScan() {
-        clearTimeout(scanTimer);
-        if(!scanSuccess && bioBtn.classList.contains('scanning')) {
-            bioBtn.classList.remove('scanning');
-            bioText.innerText = "ACCESS DENIED - HOLD LONGER";
-            bioText.style.color = "var(--accent-color)";
-            setTimeout(() => {
-                if(!scanSuccess) {
-                    bioText.innerText = "HOLD_TO_DECRYPT_CV.pdf";
-                    bioText.style.color = "var(--primary-color)";
-                }
-            }, 1500);
-        }
-    }
-
-    /* 7. TERMINAL, RED ALERT & MATRIX TOGGLE */
-    const terminalInput = document.getElementById('terminal-input');
-    const terminalOutput = document.getElementById('terminal-output');
-    
-    document.querySelector('.typing').style.animation = 'typing-sequence 2s steps(17) forwards';
-    setTimeout(() => { document.querySelector('.typing-delayed').style.animation = 'typing-sequence 2s steps(28) forwards'; document.querySelector('.typing-delayed').style.opacity = '1'; }, 2400);
-    setTimeout(() => { document.querySelector('.typing-interactive-prompt').style.opacity = '1'; }, 4600);
-
-    terminalInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            const command = terminalInput.value.toLowerCase().trim();
-            terminalInput.value = '';
-            
-            if (command === 'clear') {
-                terminalOutput.innerText = '';
-            } 
-            else if (command === 'whoami') {
-                terminalOutput.innerText = '> SYSTEM USER: SAMI HAMEG. ROLE: CYBERSECURITY STUDENT.';
-            } 
-            else if (command === 'sudo su' || command === 'alert') {
-                document.body.classList.toggle('red-alert');
-                const isRed = document.body.classList.contains('red-alert');
-                
-                if (isRed) {
-                    terminalOutput.innerHTML = '<span style="color:#ff003c; font-weight:bold;">> CRITICAL WARNING: ROOT ACCESS BREACH DETECTED.</span>';
-                    document.querySelector('.status-online').style.color = '#ff003c';
-                    document.querySelector('.status-online').innerText = 'COMPROMISED';
-                } else {
-                    terminalOutput.innerText = '> SYSTEM RESTORED TO SECURE STATE.';
-                    document.querySelector('.status-online').style.color = '#00ff00';
-                    document.querySelector('.status-online').innerText = 'PROTECTED';
-                }
-                
-                if(window.pJSDom && window.pJSDom.length > 0) {
-                    const pjs = window.pJSDom[0].pJS;
-                    const color = isRed ? '#ff003c' : '#00f2ff';
-                    pjs.particles.color.value = color;
-                    pjs.particles.line_linked.color = color;
-                    pjs.fn.particlesRefresh();
-                }
-            } 
-            else if (command === 'matrix') {
-                document.body.classList.toggle('matrix-mode');
-                if (document.body.classList.contains('matrix-mode')) {
-                    document.getElementById('particles-js').style.display = 'none';
-                    canvas.style.display = 'block';
-                    if(!matrixInterval) matrixInterval = setInterval(drawMatrix, 33);
-                    terminalOutput.innerText = '> WAKE UP, NEO. MATRIX PROTOCOL INITIATED.';
-                } else {
-                    document.getElementById('particles-js').style.display = 'block';
-                    canvas.style.display = 'none';
-                    clearInterval(matrixInterval);
-                    matrixInterval = null;
-                    terminalOutput.innerText = '> MATRIX PROTOCOL DEACTIVATED.';
-                }
-            }
-            else if (command === '') {
-                terminalOutput.innerText = '';
-            } else {
-                terminalOutput.innerText = `> COMMAND NOT FOUND: ${command}. Try 'matrix', 'sudo su', 'whoami', 'clear'.`;
-            }
-        }
-    });
-</script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+<script src="main.js" defer></script>
 
 </body>
 </html>
