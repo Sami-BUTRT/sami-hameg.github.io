@@ -74,6 +74,15 @@ body.red-alert .tag { background: rgba(255, 0, 60, 0.1); }
 footer { text-align: center; padding: 60px; font-family: 'Share Tech Mono', monospace; color: var(--text-dim); }
 a { color: var(--primary-color); text-decoration: none; cursor: pointer; }
 
+/* --- PROFIL & PHOTO --- */
+.about-grid { display: grid; grid-template-columns: 150px 1fr; gap: 30px; align-items: center; }
+.profile-frame { width: 150px; height: 150px; border: 2px solid var(--primary-color); border-radius: 8px; overflow: hidden; box-shadow: var(--glow); }
+.profile-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+@media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+}
+
 /* --- HUD & RADAR --- */
 #hud-box { position: fixed; pointer-events: none; background: rgba(5, 8, 10, 0.95); border: 1px solid var(--primary-color); box-shadow: var(--glow); color: var(--text-main); padding: 8px 12px; font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; z-index: 10000; opacity: 0; transition: opacity 0.2s; }
 .hud-tooltip { cursor: help; }
