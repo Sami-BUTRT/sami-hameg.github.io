@@ -64,8 +64,27 @@ body.red-alert .card { border-color: #4a0d0d; }
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
 .skill-category h3 { font-family: 'Share Tech Mono', monospace; color: var(--primary-color); font-size: 1rem; margin-bottom: 15px; border-bottom: 1px solid rgba(0, 242, 255, 0.2); padding-bottom: 5px; }
 
-.tag { display: inline-block; padding: 4px 10px; background: rgba(0, 242, 255, 0.1); border: 1px solid var(--primary-color); color: var(--primary-color); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; margin: 4px; cursor: default; transition: 0.3s; }
+/* MODIFICATIONS CSS POUR LES TAGS ET LES LOGOS */
+.tag { 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px; 
+    padding: 4px 10px; 
+    background: rgba(0, 242, 255, 0.1); 
+    border: 1px solid var(--primary-color); 
+    color: var(--primary-color); 
+    font-family: 'JetBrains Mono', monospace; 
+    font-size: 0.75rem; 
+    margin: 4px; 
+    cursor: default; 
+    transition: 0.3s; 
+}
+.tag i {
+    font-size: 1.2rem;
+}
 body.red-alert .tag { background: rgba(255, 0, 60, 0.1); }
+/* FIN DES MODIFICATIONS */
+
 .vuln-tag { color: var(--accent-color); font-weight: bold; border-bottom: 1px dashed var(--accent-color); }
 
 .btn { display: inline-block; padding: 10px 20px; border: 1px solid var(--primary-color); color: var(--primary-color); text-decoration: none; font-family: 'Share Tech Mono', monospace; transition: 0.3s; background: transparent; cursor: pointer; }
