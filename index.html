@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1E7NVE8R6B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1E7NVE8R6B');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sami Hameg | Portfolio Cybersécurité</title>
@@ -30,7 +39,7 @@
     
     <link rel="stylesheet" href="style.css">
 
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.credly.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src https://fonts.gstatic.com https://cdn.jsdelivr.net; frame-src https://www.credly.com; img-src 'self' data: https://cdn.credly.com https://images.credly.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://cdn.credly.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src https://fonts.gstatic.com https://cdn.jsdelivr.net; frame-src https://www.credly.com; img-src 'self' data: https://www.google-analytics.com https://cdn.credly.com https://images.credly.com;">
 </head>
 <body>
 
@@ -121,8 +130,8 @@
             <p>> Université Sorbonne Paris Nord - Villetaneuse</p>
             
             <ul class="list-none" style="margin-top: 15px;">
-                <li><span class="text-success">[+]</span> <strong>1ère année :</strong> validée (moyennes des semestres 1 et 2 > 10)</li>
-                <li><span class="text-success">[+]</span> <strong>2e année :</strong> en cours (moyenne du semestre 3 > 10)</li>
+                <li><span class="text-success">[+]</span> <strong>1ère année :</strong> validée</li>
+                <li><span class="text-success">[+]</span> <strong>2e année :</strong> en cours</li>
                 <li><span class="text-success">[+]</span> <strong>3e année :</strong> à venir dans la formation</li>
             </ul>
         </div>
@@ -194,13 +203,9 @@
         </div>
 
         <ul class="list-none" style="margin-top: 10px;">
-            <li><span class="text-success">[+]</span> Projet de fin de semestre réalisé <strong>seul</strong> (Note obtenue : <strong>> 14/20</strong>).</li>
+            <li><span class="text-success">[+]</span> Projet de fin de semestre réalisé <strong>seul</strong>.</li>
             <li><span class="text-success">[+]</span> Scan de vulnérabilités critiques via <strong>Nessus</strong>.</li>
-            <li><span class="text-success">[+]</span> Exploitation de failles : 
-                <span class="vuln-tag hud-tooltip" data-tooltip="Score CVSS : 10.0 (Critique)">CVE-2010-2075</span> 
-                et 
-                <span class="vuln-tag hud-tooltip" data-tooltip="Score CVSS : 10.0 (Critique)">MS08-067</span>.
-            </li>
+            <li><span class="text-success">[+]</span> Exploitation de failles et compromission des cibles.</li>
             <li><span class="text-success">[+]</span> Rédaction d'un <strong>rapport</strong> avec préconisations de <strong>remédiation</strong>.</li>
         </ul>
 
@@ -221,10 +226,10 @@
         </div>
 
         <ul class="list-none" style="margin-top: 10px;">
-            <li><span class="text-success">[+]</span> Déploiement d'une architecture en étoile sur <strong>DigitalOcean</strong> (Serveur vs Clients distants).</li>
+            <li><span class="text-success">[+]</span> Déploiement d'une architecture en étoile sur <strong>DigitalOcean</strong>.</li>
             <li><span class="text-success">[+]</span> Configuration d'<strong>agents Zabbix</strong> pour la collecte de métriques en temps réel.</li>
             <li><span class="text-success">[+]</span> Création de <strong>Triggers</strong> personnalisés pour la détection d'attaques par déni de service (DoS).</li>
-            <li><span class="text-success">[+]</span> Simulation d'attaque via <strong>stress</strong> et validation du cycle d'alerte (Problem -> Resolved).</li>
+            <li><span class="text-success">[+]</span> Simulation d'attaque via <strong>stress</strong> et validation du cycle d'alerte.</li>
         </ul>
 
         <div class="project-actions">
@@ -292,11 +297,11 @@
         <h2 class="section-title decrypt-target" data-text="08. CONFORMITE_RGPD">08. CONFORMITE_RGPD</h2>
         <div class="card rgpd-card">
             <p class="rgpd-heading"><strong>>_ AVIS_DE_CONFIDENTIALITÉ</strong></p>
-            <p>Ce portfolio est conçu dans le plus strict respect de la vie privée.</p>
+            <p>Ce portfolio respecte la vie privée.</p>
             <ul class="list-none" style="margin-top: 10px;">
-                <li><span class="text-success">[+]</span> <strong>Aucune collecte :</strong> Je ne récolte, ne stocke ni ne partage aucune de vos données personnelles.</li>
-                <li><span class="text-success">[+]</span> <strong>Zéro tracking :</strong> Ce site n'utilise aucun cookie de pistage publicitaire ou d'analyse intrusif.</li>
-                <li><span class="text-success">[+]</span> Votre navigation reste strictement locale et confidentielle.</li>
+                <li><span class="text-success">[+]</span> <strong>Analyses :</strong> Ce site utilise Google Analytics uniquement pour mesurer l'audience et l'intérêt porté aux projets techniques.</li>
+                <li><span class="text-success">[+]</span> <strong>Confidentialité :</strong> Aucune donnée nominative n'est collectée par moi-même en dehors des informations que vous choisissez de me transmettre.</li>
+                <li><span class="text-success">[+]</span> Votre navigation aide à améliorer le contenu de ce portfolio.</li>
             </ul>
         </div>
     </section>
